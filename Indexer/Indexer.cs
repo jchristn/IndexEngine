@@ -578,40 +578,55 @@ namespace Indexer
                     }
                 }
 
-                #region Old-Deprecated-Line-by-Line
+                #endregion
 
-                /*
-                foreach (KeyValuePair<string, int> term in terms)
+                #region Submit-Remaining-Terms
+
+                if (tempDict != null && tempDict.Count >= 0)
                 {
+                    #region Drain-Remainder
+
                     query =
-                        "INSERT INTO index_entries " +
-                        "(term, refcount, docs_guid) " +
-                        "VALUES " +
-                        "(" +
-                        "'" + DatabaseWrapper.SanitizeString(term.Key) + "'," +
-                        "'" + term.Value + "'," +
-                        "'" + DatabaseWrapper.SanitizeString(doc.ReferenceGuid) + "'" +
-                        ")";
+                        "INSERT INTO index_entries (term, refcount, docs_guid) VALUES ";
+
+                    int termsAdded = 0;
+                    foreach (KeyValuePair<string, int> currKvp in tempDict)
+                    {
+                        if (termsAdded == 0)
+                        {
+                            query +=
+                                "('" + DatabaseWrapper.SanitizeString(currKvp.Key) + "'," +
+                                currKvp.Value + "," +
+                                "'" + DatabaseWrapper.SanitizeString(doc.ReferenceGuid) + "')";
+                        }
+                        else
+                        {
+                            query +=
+                                ",('" + DatabaseWrapper.SanitizeString(currKvp.Key) + "'," +
+                                currKvp.Value + "," +
+                                "'" + DatabaseWrapper.SanitizeString(doc.ReferenceGuid) + "')";
+                        }
+
+                        termsAdded++;
+                    }
 
                     result = null;
                     if (!DatabaseWrapper.ExecuteQuery(query, out result))
                     {
-                        Log("ProcessSubmittedDocument unable to execute INSERT query for index terms entry");
+                        Log("ProcessSubmittedDocument unable to execute INSERT query for remaining index terms entry");
                         return;
                     }
-
-                    termsRecorded++;
-                    if (termsRecorded % 100 == 0)
+                    else
                     {
-                        Log("ProcessSubmittedDocument processed " + termsRecorded + "/" + terms.Count + " terms");
+                        Log("ProcessSubmittedDocument processed " + termsRecorded + "/" + termsTotal + " terms");
+                        tempDict = new Dictionary<string, int>();
                     }
+
+                    #endregion
                 }
-                */
 
                 #endregion
 
-                #endregion
-                
                 return;
             }
             catch (Exception e)

@@ -6,4 +6,3 @@ d:\code\trainerdate\Indexer\Indexer\bin\Debug\System.Data.Portable.dll
 d:\code\trainerdate\Indexer\Indexer\bin\Debug\System.Transactions.Portable.dll
 d:\code\trainerdate\Indexer\Indexer\obj\Debug\Indexer.dll
 d:\code\trainerdate\Indexer\Indexer\obj\Debug\Indexer.pdb
-d:\code\trainerdate\Indexer\Indexer\obj\Debug\Indexer.csprojResolveAssemblyReference.cache
