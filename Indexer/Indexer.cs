@@ -62,6 +62,20 @@ namespace Indexer
             return;
         }
 
+        public void SubmitDocumentSync(Document curr)
+        {
+            if (curr == null) throw new ArgumentNullException("curr");
+            ProcessSubmittedDocument(curr, null);
+            return;
+        }
+
+        public void SubmitDocumentSync(Document curr, List<string> tags)
+        {
+            if (curr == null) throw new ArgumentNullException("curr");
+            ProcessSubmittedDocument(curr, tags);
+            return;
+        }
+
         public int GetProcessingThreadsCount()
         {
             return ProcessingThreadsCount;

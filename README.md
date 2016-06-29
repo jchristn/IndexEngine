@@ -12,7 +12,7 @@ index engine is a simple indexer written in C# using Sqlite as a storage reposit
 ## performance and scale
 it's pretty quick :)  It hasn't been tested with huge document libraries or anything, so I'd recommend testing thoroughly before using in production. 
 
-## sample app
+## using index engine
 ```
 using Indexer;
 ```
@@ -31,7 +31,8 @@ Document d = new Document(
   "AddedBy",			// i.e. Joel
   Encoding.UTF8.GetBytes("This is some sample data for indexing")
 );
-ie.SubmitDocument(d);
+ie.SubmitDocument(d);		// async, returns immediately
+ie.SubmitDocumentSync(d);	// sync, returns after completion
 ```
 
 Searching the index:
@@ -57,4 +58,43 @@ ie.DeleteDocumentByHandle("C:\\Documents\\MarkTwain.txt");
 Document d = RetrieveDocumentByGuid("abcd1234...");
 Document d = RetrieveDocumentByHandle("C:\\Documents\\MarkTwain.txt");
 bool b = IsHandleIndexed("C:\\Documents\\MarkTwain.txt");
+```
+
+## simple full app
+```
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Indexer;
+
+namespace sandbox
+{
+    public partial class Program
+    {
+        public static void Main(string[] args)
+        {
+            // initialize
+            IndexEngine ie = new IndexEngine("idx.sqlite");
+
+            // create document object
+            Document d = new Document(
+                "Title",
+                "Description",
+                "Some file system handle",
+                "The Internet",
+                "Joel",
+                Encoding.UTF8.GetBytes(
+                	"This is some data getting added into the index")
+            	);
+
+            // synchronously index the document
+            ie.SubmitDocumentSync(d);
+
+            // search the index and display the results
+            List<string> terms = new List<string>() { "index", "added" };
+            List<Document> res = ie.SearchIndex(terms, null);
+            if (res != null) foreach (Document c in res) Console.WriteLine(c.ToString());
+        }
+    }
+}
 ```
