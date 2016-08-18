@@ -11,10 +11,11 @@
         <summary>index engine is a simple indexer written in C# using Sqlite as a storage repository. Mono.Data.Sqlite was chosen specifically to ensure compatibility with Mono.</summary>
         <releaseNotes>Sync document submission API</releaseNotes>
         <copyright>(c)2016 marauder software inc</copyright>
+        <tags>index text search lucene solr elasticsearch</tags>
     </metadata>
     <files>
-        <file src="..\Indexer\bin\Debug\Indexer.dll" target="lib\Indexer.dll" />
-        <file src="..\Indexer\bin\Debug\Indexer.pdb" target="lib\Indexer.pdb" />
-        <file src="..\Indexer\bin\Debug\Mono.Data.Sqlite.dll" target="lib\Mono.Data.Sqlite.dll" />
+        <file src="lib\Indexer.dll" target="lib\Indexer.dll" />
+        <file src="lib\Indexer.pdb" target="lib\Indexer.pdb" />
+        <file src="lib\Mono.Data.Sqlite.dll" target="lib\Mono.Data.Sqlite.dll" />
     </files>
 </package>

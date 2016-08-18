@@ -1,4 +1,10 @@
 # index engine
+
+[![][nuget-img]][nuget]
+
+[nuget]:     https://www.nuget.org/packages/IndexEngine
+[nuget-img]: https://badge.fury.io/nu/Object.svg
+
 simple indexer in C#
 
 Please refer to the test console application in the solution for testing the library. 
