@@ -7,3 +7,4 @@ d:\Code\trainerdate\Indexer\IndexerTest\bin\Release\Indexer.pdb
 d:\Code\trainerdate\Indexer\IndexerTest\obj\Release\IndexerTest.csprojResolveAssemblyReference.cache
 d:\Code\trainerdate\Indexer\IndexerTest\obj\Release\IndexerTest.exe
 d:\Code\trainerdate\Indexer\IndexerTest\obj\Release\IndexerTest.pdb
+D:\code\Trainerdate\Indexer\IndexerTest\bin\Release\Indexer.dll.config
