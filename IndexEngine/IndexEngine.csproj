@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/jchristn/indexengine</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jchristn/indexengine</RepositoryUrl>
+    <RepositoryType>Github</RepositoryType>
+    <PackageLicenseUrl>https://github.com/jchristn/IndexEngine/blob/master/LICENSE.txt</PackageLicenseUrl>
+    <Version>1.0.5</Version>
+    <Authors>Joel Christner</Authors>
+    <Description>Index engine is a simple indexer written in C# using Sqlite as a storage repository. Mono.Data.Sqlite was chosen specifically to ensure compatibility with Mono.  Copy sqlite3.dll to your output dir.</Description>
+    <Copyright>(c)2019 Joel Christner</Copyright>
+    <PackageTags>index text search lucene solr elastic elasticsearch simple light</PackageTags>
+    <PackageReleaseNotes>Retarget to .NET Core 2.0 and .NET Framework</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mono.Data.Sqlite" Version="1.0.61" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="sqlite3.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

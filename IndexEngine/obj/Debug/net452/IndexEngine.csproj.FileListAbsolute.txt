@@ -1,0 +1,11 @@
+C:\code\Misc\IndexEngine\IndexEngine\bin\Debug\net452\sqlite3.dll
+C:\code\Misc\IndexEngine\IndexEngine\bin\Debug\net452\IndexEngine.dll
+C:\code\Misc\IndexEngine\IndexEngine\bin\Debug\net452\IndexEngine.pdb
+C:\code\Misc\IndexEngine\IndexEngine\bin\Debug\net452\Mono.Data.Sqlite.dll
+C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\net452\IndexEngine.csprojAssemblyReference.cache
+C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\net452\IndexEngine.csproj.CoreCompileInputs.cache
+C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\net452\IndexEngine.AssemblyInfoInputs.cache
+C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\net452\IndexEngine.AssemblyInfo.cs
+C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\net452\IndexEngine.csproj.CopyComplete
+C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\net452\IndexEngine.dll
+C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\net452\IndexEngine.pdb

@@ -1,0 +1,12 @@
+C:\code\Misc\IndexEngine\TestNetFramework\bin\Debug\sqlite3.dll
+C:\code\Misc\IndexEngine\TestNetFramework\bin\Debug\IndexerTest.exe.config
+C:\code\Misc\IndexEngine\TestNetFramework\bin\Debug\IndexerTest.exe
+C:\code\Misc\IndexEngine\TestNetFramework\bin\Debug\IndexerTest.pdb
+C:\code\Misc\IndexEngine\TestNetFramework\bin\Debug\IndexEngine.dll
+C:\code\Misc\IndexEngine\TestNetFramework\bin\Debug\Mono.Data.Sqlite.dll
+C:\code\Misc\IndexEngine\TestNetFramework\bin\Debug\IndexEngine.pdb
+C:\code\Misc\IndexEngine\TestNetFramework\obj\Debug\TestNetFramework.csprojAssemblyReference.cache
+C:\code\Misc\IndexEngine\TestNetFramework\obj\Debug\TestNetFramework.csproj.CoreCompileInputs.cache
+C:\code\Misc\IndexEngine\TestNetFramework\obj\Debug\TestNetFramework.csproj.CopyComplete
+C:\code\Misc\IndexEngine\TestNetFramework\obj\Debug\IndexerTest.exe
+C:\code\Misc\IndexEngine\TestNetFramework\obj\Debug\IndexerTest.pdb

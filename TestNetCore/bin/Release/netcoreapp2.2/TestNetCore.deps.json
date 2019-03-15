@@ -1,0 +1,54 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.2",
+    "signature": "a17e604536bc566207434ebe204d27fb9fe64b6c"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.2": {
+      "TestNetCore/1.0.0": {
+        "dependencies": {
+          "IndexEngine": "1.0.5"
+        },
+        "runtime": {
+          "TestNetCore.dll": {}
+        }
+      },
+      "Mono.Data.Sqlite/1.0.61": {
+        "runtime": {
+          "lib/net40/Mono.Data.Sqlite.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "1.0.61.0"
+          }
+        }
+      },
+      "IndexEngine/1.0.5": {
+        "dependencies": {
+          "Mono.Data.Sqlite": "1.0.61"
+        },
+        "runtime": {
+          "IndexEngine.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TestNetCore/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Mono.Data.Sqlite/1.0.61": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-o5bYhnYDlQ8qiDBDJEnnK/LlQnHzpAb6ixXdrZKcVGv26jBfSm58ujAR1NLBhs0h+R5782VufbaF6gzYq3iiaA==",
+      "path": "mono.data.sqlite/1.0.61",
+      "hashPath": "mono.data.sqlite.1.0.61.nupkg.sha512"
+    },
+    "IndexEngine/1.0.5": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

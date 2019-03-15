@@ -1,0 +1,15 @@
+C:\Code\Misc\IndexEngine\TestNetCore\bin\Debug\netcoreapp2.2\sqlite3.dll
+C:\Code\Misc\IndexEngine\TestNetCore\bin\Debug\netcoreapp2.2\TestNetCore.deps.json
+C:\Code\Misc\IndexEngine\TestNetCore\bin\Debug\netcoreapp2.2\TestNetCore.runtimeconfig.json
+C:\Code\Misc\IndexEngine\TestNetCore\bin\Debug\netcoreapp2.2\TestNetCore.runtimeconfig.dev.json
+C:\Code\Misc\IndexEngine\TestNetCore\bin\Debug\netcoreapp2.2\TestNetCore.dll
+C:\Code\Misc\IndexEngine\TestNetCore\bin\Debug\netcoreapp2.2\TestNetCore.pdb
+C:\Code\Misc\IndexEngine\TestNetCore\bin\Debug\netcoreapp2.2\IndexEngine.dll
+C:\Code\Misc\IndexEngine\TestNetCore\bin\Debug\netcoreapp2.2\IndexEngine.pdb
+C:\Code\Misc\IndexEngine\TestNetCore\obj\Debug\netcoreapp2.2\TestNetCore.csprojAssemblyReference.cache
+C:\Code\Misc\IndexEngine\TestNetCore\obj\Debug\netcoreapp2.2\TestNetCore.csproj.CoreCompileInputs.cache
+C:\Code\Misc\IndexEngine\TestNetCore\obj\Debug\netcoreapp2.2\TestNetCore.AssemblyInfoInputs.cache
+C:\Code\Misc\IndexEngine\TestNetCore\obj\Debug\netcoreapp2.2\TestNetCore.AssemblyInfo.cs
+C:\Code\Misc\IndexEngine\TestNetCore\obj\Debug\netcoreapp2.2\TestNetCore.csproj.CopyComplete
+C:\Code\Misc\IndexEngine\TestNetCore\obj\Debug\netcoreapp2.2\TestNetCore.dll
+C:\Code\Misc\IndexEngine\TestNetCore\obj\Debug\netcoreapp2.2\TestNetCore.pdb
