@@ -5,7 +5,7 @@
 [nuget]:     https://www.nuget.org/packages/IndexEngine
 [nuget-img]: https://badge.fury.io/nu/Object.svg
 
-IndexEngine is a simple indexer written in C# using Sqlite as a storage repository. Mono.Data.Sqlite was chosen specifically to ensure compatibility with Mono.  Copy sqlite3.dll to your output dir.
+IndexEngine is a simple indexer written in C# using Sqlite as a storage repository. 
 
 As of release 1.0.5, IndexEngine is targeted to both .NET Core 2.0 and .NET Framework 4.5.2.
 

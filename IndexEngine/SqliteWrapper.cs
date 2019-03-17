@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Mono.Data.Sqlite;
 
 namespace Indexer
 {
@@ -55,13 +55,13 @@ namespace Indexer
             
             #region Process
 
-            using (SqliteConnection conn = new SqliteConnection(DatabaseConnectionString))
+            using (SQLiteConnection conn = new SQLiteConnection(DatabaseConnectionString))
             {
                 conn.Open();
 
-                using (SqliteCommand cmd = new SqliteCommand(query, conn))
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
-                    using (SqliteDataReader rdr = cmd.ExecuteReader())
+                    using (SQLiteDataReader rdr = cmd.ExecuteReader())
                     {
                         result.Load(rdr);
                         return true;
@@ -79,13 +79,13 @@ namespace Indexer
         private bool CreateDatabase(string name)
         {
             if (String.IsNullOrEmpty(name)) throw new ArgumentNullException("name");
-            using (SqliteConnection conn = new SqliteConnection("Data Source=" + name + ";Version=3;"))
+            using (SQLiteConnection conn = new SQLiteConnection("Data Source=" + name + ";Version=3;"))
             {
                 conn.Open();
                 if (!File.Exists(name))
                 {
                     Log("CreateDatabase creating file " + name);
-                    SqliteConnection.CreateFile(name);
+                    SQLiteConnection.CreateFile(name);
                     return true;
                 }
                 else

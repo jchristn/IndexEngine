@@ -15,15 +15,15 @@
     <repository type="Github" url="https://github.com/jchristn/indexengine" />
     <dependencies>
       <group targetFramework=".NETFramework4.5.2">
-        <dependency id="Mono.Data.Sqlite" version="1.0.61" exclude="Build,Analyzers" />
+        <dependency id="System.Data.SQLite" version="1.0.110" exclude="Build,Analyzers" />
       </group>
       <group targetFramework=".NETStandard2.0">
-        <dependency id="Mono.Data.Sqlite" version="1.0.61" exclude="Build,Analyzers" />
+        <dependency id="System.Data.SQLite" version="1.0.110" exclude="Build,Analyzers" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="C:\code\Misc\IndexEngine\IndexEngine\bin\Release\net452\IndexEngine.dll" target="lib\net452\IndexEngine.dll" />
-    <file src="C:\code\Misc\IndexEngine\IndexEngine\bin\Release\netstandard2.0\IndexEngine.dll" target="lib\netstandard2.0\IndexEngine.dll" />
+    <file src="C:\Code\Misc\IndexEngine\IndexEngine\bin\Release\net452\IndexEngine.dll" target="lib\net452\IndexEngine.dll" />
+    <file src="C:\Code\Misc\IndexEngine\IndexEngine\bin\Release\netstandard2.0\IndexEngine.dll" target="lib\netstandard2.0\IndexEngine.dll" />
   </files>
 </package>

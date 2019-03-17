@@ -1,30 +1,57 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "a17e604536bc566207434ebe204d27fb9fe64b6c"
+    "signature": "6d190fcd632a17e099bd0ebcc6fa97cfd0e017d9"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.2": {
       "TestNetCore/1.0.0": {
         "dependencies": {
-          "IndexEngine": "1.0.5"
+          "IndexEngine": "1.0.7"
         },
         "runtime": {
           "TestNetCore.dll": {}
         }
       },
-      "Mono.Data.Sqlite/1.0.61": {
+      "System.Data.SQLite/1.0.110": {
+        "dependencies": {
+          "System.Data.SQLite.Core": "1.0.110"
+        }
+      },
+      "System.Data.SQLite.Core/1.0.110": {
         "runtime": {
-          "lib/net40/Mono.Data.Sqlite.dll": {
-            "assemblyVersion": "4.0.0.0",
-            "fileVersion": "1.0.61.0"
+          "lib/netstandard2.0/System.Data.SQLite.dll": {
+            "assemblyVersion": "1.0.110.0",
+            "fileVersion": "1.0.110.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/netstandard2.0/SQLite.Interop.dll": {
+            "rid": "linux-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/osx-x64/native/netstandard2.0/SQLite.Interop.dll": {
+            "rid": "osx-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/netstandard2.0/SQLite.Interop.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "1.0.110.0"
+          },
+          "runtimes/win-x86/native/netstandard2.0/SQLite.Interop.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "1.0.110.0"
           }
         }
       },
-      "IndexEngine/1.0.5": {
+      "IndexEngine/1.0.7": {
         "dependencies": {
-          "Mono.Data.Sqlite": "1.0.61"
+          "System.Data.SQLite": "1.0.110"
         },
         "runtime": {
           "IndexEngine.dll": {}
@@ -38,14 +65,21 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Mono.Data.Sqlite/1.0.61": {
+    "System.Data.SQLite/1.0.110": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-o5bYhnYDlQ8qiDBDJEnnK/LlQnHzpAb6ixXdrZKcVGv26jBfSm58ujAR1NLBhs0h+R5782VufbaF6gzYq3iiaA==",
-      "path": "mono.data.sqlite/1.0.61",
-      "hashPath": "mono.data.sqlite.1.0.61.nupkg.sha512"
+      "sha512": "sha512-YFUBQ4BzxzLhq/TOVg8wipF+YbpFHrfMx1dkhgpfTDsiLnpt/2oqRmI0ti48rNhNjR0ZPW5TLCdNA4zrHiNy0g==",
+      "path": "system.data.sqlite/1.0.110",
+      "hashPath": "system.data.sqlite.1.0.110.nupkg.sha512"
     },
-    "IndexEngine/1.0.5": {
+    "System.Data.SQLite.Core/1.0.110": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-x7xZ0oBWycJch9ShAFwTQRPJ2HEo5NmXyhx/LFJvSbCBQVXnHc9rIAeLo1VXzDFbfbtPl3HFpFhriEnUkS2L0Q==",
+      "path": "system.data.sqlite.core/1.0.110",
+      "hashPath": "system.data.sqlite.core.1.0.110.nupkg.sha512"
+    },
+    "IndexEngine/1.0.7": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

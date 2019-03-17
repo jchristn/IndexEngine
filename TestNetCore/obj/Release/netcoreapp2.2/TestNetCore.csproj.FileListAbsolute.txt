@@ -1,4 +1,3 @@
-C:\Code\Misc\IndexEngine\TestNetCore\bin\Release\netcoreapp2.2\sqlite3.dll
 C:\Code\Misc\IndexEngine\TestNetCore\bin\Release\netcoreapp2.2\TestNetCore.deps.json
 C:\Code\Misc\IndexEngine\TestNetCore\bin\Release\netcoreapp2.2\TestNetCore.runtimeconfig.json
 C:\Code\Misc\IndexEngine\TestNetCore\bin\Release\netcoreapp2.2\TestNetCore.runtimeconfig.dev.json
