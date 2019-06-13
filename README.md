@@ -25,15 +25,15 @@ IndexEngine ie = new IndexEngine("idx.db");
 
 // Add a document
 Document d = new Document(
-  "Title",				// i.e. Mark Twain
-  "Description",		// i.e. A Great Book
-  "File Path or URL",	// i.e. C:\Documents\MarkTwain.txt
-  "Source",				// i.e. The Internet
-  "AddedBy",			// i.e. Joel
+  "Title",             // i.e. Mark Twain
+  "Description",       // i.e. A Great Book
+  "File Path or URL",  // i.e. C:\Documents\MarkTwain.txt
+  "Source",            // i.e. The Internet
+  "AddedBy",           // i.e. Joel
   Encoding.UTF8.GetBytes("This is some sample data for indexing")
 );
-ie.SubmitDocument(d);		// async, returns immediately
-ie.SubmitDocumentSync(d);	// sync, returns after completion
+ie.SubmitDocument(d);       // async, returns immediately
+ie.SubmitDocumentSync(d);   // sync, returns after completion
 
 // Search the index
 List<string> terms = new List<string> { "some", "data" };
