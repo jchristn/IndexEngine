@@ -3,11 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNetFramework", "TestNetFramework\TestNetFramework.csproj", "{EF20449E-D1A0-4B81-8833-E6F8B3FD505F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{EF20449E-D1A0-4B81-8833-E6F8B3FD505F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndexEngine", "IndexEngine\IndexEngine.csproj", "{4380F5EE-F5AC-4535-A951-568C79071E6A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNetCore", "TestNetCore\TestNetCore.csproj", "{C244F78E-C05D-4366-A6D9-78F0C373239B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

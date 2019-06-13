@@ -11,3 +11,4 @@ C:\Code\Misc\IndexEngine\IndexEngine\obj\Release\net452\IndexEngine.AssemblyInfo
 C:\Code\Misc\IndexEngine\IndexEngine\obj\Release\net452\IndexEngine.csproj.CopyComplete
 C:\Code\Misc\IndexEngine\IndexEngine\obj\Release\net452\IndexEngine.dll
 C:\Code\Misc\IndexEngine\IndexEngine\obj\Release\net452\IndexEngine.pdb
+C:\Code\Misc\IndexEngine\IndexEngine\obj\Release\net452\IndexEngine.csprojAssemblyReference.cache

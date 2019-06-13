@@ -1,7 +1,5 @@
-C:\code\Misc\IndexEngine\IndexEngine\bin\Debug\net452\sqlite3.dll
 C:\code\Misc\IndexEngine\IndexEngine\bin\Debug\net452\IndexEngine.dll
 C:\code\Misc\IndexEngine\IndexEngine\bin\Debug\net452\IndexEngine.pdb
-C:\code\Misc\IndexEngine\IndexEngine\bin\Debug\net452\Mono.Data.Sqlite.dll
 C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\net452\IndexEngine.csprojAssemblyReference.cache
 C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\net452\IndexEngine.csproj.CoreCompileInputs.cache
 C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\net452\IndexEngine.AssemblyInfoInputs.cache
@@ -9,3 +7,8 @@ C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\net452\IndexEngine.AssemblyInfo.c
 C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\net452\IndexEngine.csproj.CopyComplete
 C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\net452\IndexEngine.dll
 C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\net452\IndexEngine.pdb
+C:\Code\Misc\IndexEngine\IndexEngine\bin\Debug\net452\EntityFramework.SqlServer.dll
+C:\Code\Misc\IndexEngine\IndexEngine\bin\Debug\net452\EntityFramework.dll
+C:\Code\Misc\IndexEngine\IndexEngine\bin\Debug\net452\System.Data.SQLite.dll
+C:\Code\Misc\IndexEngine\IndexEngine\bin\Debug\net452\System.Data.SQLite.EF6.dll
+C:\Code\Misc\IndexEngine\IndexEngine\bin\Debug\net452\System.Data.SQLite.Linq.dll

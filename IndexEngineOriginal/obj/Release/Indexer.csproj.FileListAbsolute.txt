@@ -1,8 +1,0 @@
-d:\code\trainerdate\Indexer\Indexer\bin\Release\Indexer.dll.config
-d:\code\trainerdate\Indexer\Indexer\bin\Release\Indexer.dll
-d:\code\trainerdate\Indexer\Indexer\bin\Release\Indexer.pdb
-d:\code\trainerdate\Indexer\Indexer\bin\Release\Mono.Data.Sqlite.dll
-d:\code\trainerdate\Indexer\Indexer\bin\Release\System.Data.Portable.dll
-d:\code\trainerdate\Indexer\Indexer\bin\Release\System.Transactions.Portable.dll
-d:\code\trainerdate\Indexer\Indexer\obj\Release\Indexer.dll
-d:\code\trainerdate\Indexer\Indexer\obj\Release\Indexer.pdb

@@ -1,0 +1,17 @@
+C:\Code\Misc\IndexEngine\Test\bin\Release\net452\Test.exe.config
+C:\Code\Misc\IndexEngine\Test\bin\Release\net452\Test.exe
+C:\Code\Misc\IndexEngine\Test\bin\Release\net452\Test.pdb
+C:\Code\Misc\IndexEngine\Test\bin\Release\net452\EntityFramework.SqlServer.dll
+C:\Code\Misc\IndexEngine\Test\bin\Release\net452\EntityFramework.dll
+C:\Code\Misc\IndexEngine\Test\bin\Release\net452\System.Data.SQLite.dll
+C:\Code\Misc\IndexEngine\Test\bin\Release\net452\System.Data.SQLite.EF6.dll
+C:\Code\Misc\IndexEngine\Test\bin\Release\net452\System.Data.SQLite.Linq.dll
+C:\Code\Misc\IndexEngine\Test\bin\Release\net452\IndexEngine.dll
+C:\Code\Misc\IndexEngine\Test\bin\Release\net452\IndexEngine.pdb
+C:\Code\Misc\IndexEngine\Test\obj\Release\net452\Test.csprojAssemblyReference.cache
+C:\Code\Misc\IndexEngine\Test\obj\Release\net452\Test.csproj.CoreCompileInputs.cache
+C:\Code\Misc\IndexEngine\Test\obj\Release\net452\Test.AssemblyInfoInputs.cache
+C:\Code\Misc\IndexEngine\Test\obj\Release\net452\Test.AssemblyInfo.cs
+C:\Code\Misc\IndexEngine\Test\obj\Release\net452\Test.csproj.CopyComplete
+C:\Code\Misc\IndexEngine\Test\obj\Release\net452\Test.exe
+C:\Code\Misc\IndexEngine\Test\obj\Release\net452\Test.pdb

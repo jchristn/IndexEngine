@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>IndexEngine</id>
+    <version>1.0.8</version>
+    <authors>Joel Christner</authors>
+    <owners>Joel Christner</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/jchristn/IndexEngine/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/jchristn/indexengine</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/jchristn/indexengine/master/assets/icon.ico</iconUrl>
+    <description>Index engine is a simple indexer written in C# using Sqlite as a storage repository.</description>
+    <releaseNotes>Icon</releaseNotes>
+    <copyright>(c)2019 Joel Christner</copyright>
+    <tags>index text search lucene solr elastic elasticsearch simple light</tags>
+    <repository type="Github" url="https://github.com/jchristn/indexengine" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.5.2">
+        <dependency id="System.Data.SQLite" version="1.0.110" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="System.Data.SQLite" version="1.0.110" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Code\Misc\IndexEngine\IndexEngine\bin\Release\net452\IndexEngine.dll" target="lib\net452\IndexEngine.dll" />
+    <file src="C:\Code\Misc\IndexEngine\IndexEngine\bin\Release\netstandard2.0\IndexEngine.dll" target="lib\netstandard2.0\IndexEngine.dll" />
+  </files>
+</package>
