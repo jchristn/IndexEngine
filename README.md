@@ -1,3 +1,5 @@
+![alt tag](https://github.com/jchristn/indexengine/blob/master/assets/icon.png)
+
 # IndexEngine
 
 [![][nuget-img]][nuget]
