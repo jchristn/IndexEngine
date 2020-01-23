@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v2.2": {
       "Test/1.0.0": {
         "dependencies": {
-          "IndexEngine": "1.0.10"
+          "IndexEngine": "1.0.11"
         },
         "runtime": {
           "Test.dll": {}
@@ -49,7 +49,7 @@
           }
         }
       },
-      "IndexEngine/1.0.10": {
+      "IndexEngine/1.0.11": {
         "dependencies": {
           "System.Data.SQLite": "1.0.110"
         },
@@ -79,7 +79,7 @@
       "path": "system.data.sqlite.core/1.0.110",
       "hashPath": "system.data.sqlite.core.1.0.110.nupkg.sha512"
     },
-    "IndexEngine/1.0.10": {
+    "IndexEngine/1.0.11": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

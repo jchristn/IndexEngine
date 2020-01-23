@@ -241,7 +241,7 @@
           }
         }
       },
-      "IndexEngine/1.0.10": {
+      "IndexEngine/1.0.11": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -731,7 +731,7 @@
           "runtimes/win-x86/native/netstandard2.0/SQLite.Interop.dll": {}
         }
       },
-      "IndexEngine/1.0.10": {
+      "IndexEngine/1.0.11": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -819,7 +819,7 @@
           "lib/net451/System.Data.SQLite.Linq.dll": {}
         }
       },
-      "IndexEngine/1.0.10": {
+      "IndexEngine/1.0.11": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.2",
         "dependencies": {
@@ -892,7 +892,7 @@
           "lib/net451/System.Data.SQLite.Linq.dll": {}
         }
       },
-      "IndexEngine/1.0.10": {
+      "IndexEngine/1.0.11": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5.2",
         "dependencies": {
@@ -1800,7 +1800,7 @@
         "system.data.sqlite.linq.nuspec"
       ]
     },
-    "IndexEngine/1.0.10": {
+    "IndexEngine/1.0.11": {
       "type": "project",
       "path": "../IndexEngine/IndexEngine.csproj",
       "msbuildProject": "../IndexEngine/IndexEngine.csproj"
@@ -1808,11 +1808,11 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
-      "IndexEngine >= 1.0.10",
+      "IndexEngine >= 1.0.11",
       "Microsoft.NETCore.App >= 2.2.0"
     ],
     ".NETFramework,Version=v4.5.2": [
-      "IndexEngine >= 1.0.10"
+      "IndexEngine >= 1.0.11"
     ]
   },
   "packageFolders": {

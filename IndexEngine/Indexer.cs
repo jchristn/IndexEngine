@@ -479,16 +479,14 @@ namespace Indexer
                             }
                         }
                     }
-                }
 
-                if (terms == null || terms.Count < 1)
+                    Log("ProcessSubmittedDocument successfully extracted terms");
+                }
+                else
                 {
-                    Log("ProcessSubmittedDocument no tags submitted or no terms found");
-                    return;
+                    Log("ProcessSubmittedDocument no terms found");
                 }
-
-                Log("ProcessSubmittedDocument successfully extracted terms");
-
+                 
                 #endregion
 
                 #region Remove-Existing-Entries
@@ -614,7 +612,7 @@ namespace Indexer
 
                 if (tempDict != null && tempDict.Count >= 0)
                 {
-                    #region Drain-Remainder
+                    #region Drain-Remaining
 
                     query =
                         "INSERT INTO index_entries (term, refcount, docs_guid) VALUES ";

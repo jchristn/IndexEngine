@@ -7,12 +7,12 @@
     <RepositoryUrl>https://github.com/jchristn/indexengine</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
     <PackageLicenseUrl></PackageLicenseUrl>
-    <Version>1.0.10</Version>
+    <Version>1.0.11</Version>
     <Authors>Joel Christner</Authors>
     <Description>Index engine is a simple indexer written in C# using Sqlite as a storage repository.</Description>
     <Copyright>(c)2019 Joel Christner</Copyright>
     <PackageTags>index text search lucene solr elastic elasticsearch simple light</PackageTags>
-    <PackageReleaseNotes>Fixes to database INSERT/SELECT and string case, fix for divide by zero problem (thanks @teub!)</PackageReleaseNotes>
+    <PackageReleaseNotes>Fix to allow empty documents to be added (thanks @teub!)</PackageReleaseNotes>
     <PackageIconUrl>https://raw.githubusercontent.com/jchristn/indexengine/master/assets/icon.ico</PackageIconUrl>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
