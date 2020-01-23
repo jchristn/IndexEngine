@@ -9,7 +9,7 @@
 
 IndexEngine is a simple indexer written in C# using Sqlite as a storage repository.  As of release 1.0.5, IndexEngine is targeted to both .NET Core 2.0 and .NET Framework 4.5.2.
 
-## New in v1.0.11
+## New in v1.0.12
 
 - Fix to allow empty documents to be added (thanks @teub!)
 

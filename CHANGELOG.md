@@ -2,11 +2,15 @@
 
 ## Current Version
 
+v1.0.12
+
+- Fix (more) to allow empty documents to be added (thanks @teub!)
+
+## Previous Versions
+
 v1.0.11
 
 - Fix to allow empty documents to be added (thanks @teub!)
-
-## Previous Versions
 
 v1.0.10
 
