@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Indexer;
 
-namespace TestNetCore
+namespace Test
 {
     public class Program
     {
@@ -18,7 +18,7 @@ namespace TestNetCore
                 Console.Write("Filename: ");
                 filename = Console.ReadLine();
                 if (String.IsNullOrEmpty(filename)) return;
-                IndexEngine ie = new IndexEngine("index");
+                IndexEngine ie = new IndexEngine(filename);
                 ie.ConsoleDebug = true;
 
                 bool runForever = true;
