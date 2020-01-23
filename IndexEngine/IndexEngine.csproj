@@ -6,18 +6,26 @@
     <PackageProjectUrl>https://github.com/jchristn/indexengine</PackageProjectUrl>
     <RepositoryUrl>https://github.com/jchristn/indexengine</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
-    <PackageLicenseUrl>https://github.com/jchristn/IndexEngine/blob/master/LICENSE.txt</PackageLicenseUrl>
-    <Version>1.0.8</Version>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <Version>1.0.10</Version>
     <Authors>Joel Christner</Authors>
     <Description>Index engine is a simple indexer written in C# using Sqlite as a storage repository.</Description>
     <Copyright>(c)2019 Joel Christner</Copyright>
     <PackageTags>index text search lucene solr elastic elasticsearch simple light</PackageTags>
-    <PackageReleaseNotes>Icon</PackageReleaseNotes>
+    <PackageReleaseNotes>Fixes to database INSERT/SELECT and string case, fix for divide by zero problem (thanks @teub!)</PackageReleaseNotes>
     <PackageIconUrl>https://raw.githubusercontent.com/jchristn/indexengine/master/assets/icon.ico</PackageIconUrl>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="System.Data.SQLite" Version="1.0.110" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

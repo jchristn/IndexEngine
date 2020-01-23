@@ -9,9 +9,9 @@ C:\Code\Misc\IndexEngine\Test\bin\Debug\net452\System.Data.SQLite.Linq.dll
 C:\Code\Misc\IndexEngine\Test\bin\Debug\net452\IndexEngine.dll
 C:\Code\Misc\IndexEngine\Test\bin\Debug\net452\IndexEngine.pdb
 C:\Code\Misc\IndexEngine\Test\obj\Debug\net452\Test.csprojAssemblyReference.cache
-C:\Code\Misc\IndexEngine\Test\obj\Debug\net452\Test.csproj.CoreCompileInputs.cache
 C:\Code\Misc\IndexEngine\Test\obj\Debug\net452\Test.AssemblyInfoInputs.cache
 C:\Code\Misc\IndexEngine\Test\obj\Debug\net452\Test.AssemblyInfo.cs
 C:\Code\Misc\IndexEngine\Test\obj\Debug\net452\Test.csproj.CopyComplete
 C:\Code\Misc\IndexEngine\Test\obj\Debug\net452\Test.exe
 C:\Code\Misc\IndexEngine\Test\obj\Debug\net452\Test.pdb
+C:\code\misc\IndexEngine\Test\bin\Debug\net452\SQLite.Interop.dll

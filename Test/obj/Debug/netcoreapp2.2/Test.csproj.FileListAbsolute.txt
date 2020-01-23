@@ -6,9 +6,9 @@ C:\Code\Misc\IndexEngine\Test\bin\Debug\netcoreapp2.2\Test.pdb
 C:\Code\Misc\IndexEngine\Test\bin\Debug\netcoreapp2.2\IndexEngine.dll
 C:\Code\Misc\IndexEngine\Test\bin\Debug\netcoreapp2.2\IndexEngine.pdb
 C:\Code\Misc\IndexEngine\Test\obj\Debug\netcoreapp2.2\Test.csprojAssemblyReference.cache
-C:\Code\Misc\IndexEngine\Test\obj\Debug\netcoreapp2.2\Test.csproj.CoreCompileInputs.cache
 C:\Code\Misc\IndexEngine\Test\obj\Debug\netcoreapp2.2\Test.AssemblyInfoInputs.cache
 C:\Code\Misc\IndexEngine\Test\obj\Debug\netcoreapp2.2\Test.AssemblyInfo.cs
 C:\Code\Misc\IndexEngine\Test\obj\Debug\netcoreapp2.2\Test.csproj.CopyComplete
 C:\Code\Misc\IndexEngine\Test\obj\Debug\netcoreapp2.2\Test.dll
 C:\Code\Misc\IndexEngine\Test\obj\Debug\netcoreapp2.2\Test.pdb
+C:\code\misc\IndexEngine\Test\bin\Debug\netcoreapp2.2\IndexEngine.xml

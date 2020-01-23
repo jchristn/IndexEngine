@@ -1,13 +1,13 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "a00e18f694b29e2f1a6f6c277c72f6d207c9e971"
+    "signature": ""
   },
   "compilationOptions": {},
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "IndexEngine/1.0.8": {
+      "IndexEngine/1.0.10": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
           "System.Data.SQLite": "1.0.110"
@@ -38,7 +38,7 @@
     }
   },
   "libraries": {
-    "IndexEngine/1.0.8": {
+    "IndexEngine/1.0.10": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -46,7 +46,7 @@
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-a/iSwnRZb+LHFk49hQOyThh/ZNC3vsbZsF65XwQIb863qF6msmhdQtxGXFL28Ob2NsCz/drEj28BJd/YPpLRBg==",
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "path": "microsoft.netcore.platforms/1.1.0",
       "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
     },
@@ -60,14 +60,14 @@
     "System.Data.SQLite/1.0.110": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-YFUBQ4BzxzLhq/TOVg8wipF+YbpFHrfMx1dkhgpfTDsiLnpt/2oqRmI0ti48rNhNjR0ZPW5TLCdNA4zrHiNy0g==",
+      "sha512": "sha512-D6+Bub5qmPCwALYnL/3lMPhF+yG55v5Ry0tA0fOMP5mq4aMSDcnqAF2bfwsLBBjgAaFNxIS3NXgm7IvqJQ7hqw==",
       "path": "system.data.sqlite/1.0.110",
       "hashPath": "system.data.sqlite.1.0.110.nupkg.sha512"
     },
     "System.Data.SQLite.Core/1.0.110": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-x7xZ0oBWycJch9ShAFwTQRPJ2HEo5NmXyhx/LFJvSbCBQVXnHc9rIAeLo1VXzDFbfbtPl3HFpFhriEnUkS2L0Q==",
+      "sha512": "sha512-bFx7Jnn/AlfVobpTnKreroh8jItM4eyLz/ZQRhzxYHZ71gqlGgU8y2nSNFnqVaSNu2bAWBf6m3yNyvp9uIhOoA==",
       "path": "system.data.sqlite.core/1.0.110",
       "hashPath": "system.data.sqlite.core.1.0.110.nupkg.sha512"
     }

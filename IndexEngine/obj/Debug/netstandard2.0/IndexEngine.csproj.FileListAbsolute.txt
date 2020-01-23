@@ -1,7 +1,6 @@
 C:\code\Misc\IndexEngine\IndexEngine\bin\Debug\netstandard2.0\IndexEngine.deps.json
 C:\code\Misc\IndexEngine\IndexEngine\bin\Debug\netstandard2.0\IndexEngine.dll
 C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\netstandard2.0\IndexEngine.csprojAssemblyReference.cache
-C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\netstandard2.0\IndexEngine.csproj.CoreCompileInputs.cache
 C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\netstandard2.0\IndexEngine.AssemblyInfoInputs.cache
 C:\code\Misc\IndexEngine\IndexEngine\obj\Debug\netstandard2.0\IndexEngine.AssemblyInfo.cs
 C:\code\Misc\IndexEngine\IndexEngine\bin\Debug\netstandard2.0\IndexEngine.pdb

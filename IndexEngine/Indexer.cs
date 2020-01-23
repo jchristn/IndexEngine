@@ -503,17 +503,31 @@ namespace Indexer
 
                 #region Create-New-Document-Entry
 
+                string title = doc.Title;
+                string description = doc.Description;
+                string handle = doc.Handle;
+                string source = doc.Source;
+                string addedBy = doc.AddedBy;
+                string refGuid = doc.ReferenceGuid;
+
+                if (!String.IsNullOrEmpty(title)) title = DatabaseWrapper.SanitizeString(title.ToLower());
+                if (!String.IsNullOrEmpty(description)) description = DatabaseWrapper.SanitizeString(description.ToLower());
+                if (!String.IsNullOrEmpty(handle)) handle = DatabaseWrapper.SanitizeString(handle.ToLower());
+                if (!String.IsNullOrEmpty(source)) source = DatabaseWrapper.SanitizeString(source.ToLower());
+                if (!String.IsNullOrEmpty(addedBy)) addedBy = DatabaseWrapper.SanitizeString(addedBy.ToLower());
+                if (!String.IsNullOrEmpty(refGuid)) refGuid = DatabaseWrapper.SanitizeString(refGuid.ToLower());
+
                 string query =
                     "INSERT INTO docs " +
                     "(title, description, handle, source, added_by, guid, added) " +
                     "VALUES " +
                     "(" +
-                    "'" + DatabaseWrapper.SanitizeString(doc.Title) + "'," +
-                    "'" + DatabaseWrapper.SanitizeString(doc.Description) + "'," +
-                    "'" + DatabaseWrapper.SanitizeString(doc.Handle) + "'," +
-                    "'" + DatabaseWrapper.SanitizeString(doc.Source) + "'," +
-                    "'" + DatabaseWrapper.SanitizeString(doc.AddedBy) + "'," +
-                    "'" + DatabaseWrapper.SanitizeString(doc.ReferenceGuid) + "'," +
+                    "'" + title + "'," +
+                    "'" + description + "'," +
+                    "'" + handle + "'," +
+                    "'" + source + "'," +
+                    "'" + addedBy + "'," +
+                    "'" + refGuid + "'," +
                     "'" + doc.Added.ToString("MM/dd/yyyy HH:mm:ss") + "'" +
                     ")";
 
@@ -547,19 +561,21 @@ namespace Indexer
                         int termsAdded = 0;
                         foreach (KeyValuePair<string, int> currKvp in tempDict)
                         {
+                            if (String.IsNullOrEmpty(currKvp.Key)) continue;
+
                             if (termsAdded == 0)
                             {
                                 query +=
-                                    "('" + DatabaseWrapper.SanitizeString(currKvp.Key) + "'," +
+                                    "('" + DatabaseWrapper.SanitizeString(currKvp.Key).ToLower() + "'," +
                                     currKvp.Value + "," +
-                                    "'" + DatabaseWrapper.SanitizeString(doc.ReferenceGuid) + "')";
+                                    "'" + refGuid + "')";
                             }
                             else
                             {
                                 query +=
-                                    ",('" + DatabaseWrapper.SanitizeString(currKvp.Key) + "'," +
+                                    ",('" + DatabaseWrapper.SanitizeString(currKvp.Key).ToLower() + "'," +
                                     currKvp.Value + "," +
-                                    "'" + DatabaseWrapper.SanitizeString(doc.ReferenceGuid) + "')";
+                                    "'" + refGuid + "')";
                             }
 
                             termsAdded++;
@@ -606,19 +622,21 @@ namespace Indexer
                     int termsAdded = 0;
                     foreach (KeyValuePair<string, int> currKvp in tempDict)
                     {
+                        if (String.IsNullOrEmpty(currKvp.Key)) continue;
+
                         if (termsAdded == 0)
                         {
                             query +=
-                                "('" + DatabaseWrapper.SanitizeString(currKvp.Key) + "'," +
+                                "('" + DatabaseWrapper.SanitizeString(currKvp.Key).ToLower() + "'," +
                                 currKvp.Value + "," +
-                                "'" + DatabaseWrapper.SanitizeString(doc.ReferenceGuid) + "')";
+                                "'" + refGuid + "')";
                         }
                         else
                         {
                             query +=
-                                ",('" + DatabaseWrapper.SanitizeString(currKvp.Key) + "'," +
+                                ",('" + DatabaseWrapper.SanitizeString(currKvp.Key).ToLower() + "'," +
                                 currKvp.Value + "," +
-                                "'" + DatabaseWrapper.SanitizeString(doc.ReferenceGuid) + "')";
+                                "'" + refGuid + "')";
                         }
 
                         termsAdded++;
@@ -655,7 +673,9 @@ namespace Indexer
                 TimeSpan ts = (endTime - startTime);
 
                 decimal msTotal = Convert.ToDecimal(ts.TotalMilliseconds.ToString("F"));
-                decimal msPerTerm = Convert.ToDecimal((msTotal / termsRecorded).ToString("F"));
+                decimal msPerTerm = 0;
+                if (termsRecorded > 0) msPerTerm = Convert.ToDecimal((msTotal / termsRecorded).ToString("F"));
+
                 Log("ProcessSubmittedDocument processed " + termsRecorded + "/" + termsTotal + " terms (" + msTotal + "ms total, " + msPerTerm + "ms/term)");
             }
         }
@@ -666,13 +686,13 @@ namespace Indexer
                 "CREATE TABLE IF NOT EXISTS docs " +
                 "(" +
                 "  docs_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "  title VARCHAR(256), " +
-                "  description VARCHAR(1024), " +
-                "  handle VARCHAR(256), " +
-                "  source VARCHAR(32), " +
-                "  added_by VARCHAR(32), " +
-                "  guid VARCHAR(64), " +
-                "  added VARCHAR(32) " + 
+                "  title         VARCHAR(256)   COLLATE NOCASE, " +
+                "  description   VARCHAR(1024)  COLLATE NOCASE, " +
+                "  handle        VARCHAR(256)   COLLATE NOCASE, " +
+                "  source        VARCHAR(32)    COLLATE NOCASE, " +
+                "  added_by      VARCHAR(32)    COLLATE NOCASE, " +
+                "  guid          VARCHAR(64)    COLLATE NOCASE, " +
+                "  added         VARCHAR(32) " + 
                 ")";
 
             DataTable result = null;
@@ -697,10 +717,10 @@ namespace Indexer
             string query =
                 "CREATE TABLE IF NOT EXISTS index_entries " +
                 "(" +
-                "  index_entries_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "  term VARCHAR(256), " +
-                "  refcount INTEGER, " +
-                "  docs_guid VARCHAR(64) " +
+                "  index_entries_id  INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "  term              VARCHAR(256) COLLATE NOCASE, " +
+                "  refcount          INTEGER, " +
+                "  docs_guid         VARCHAR(64) COLLATE NOCASE" +
                 ")";
 
             DataTable result = null;

@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IndexEngine</name>
+    </assembly>
+    <members>
+        <member name="T:Indexer.aConcurrentList`1">
+            <summary>
+            A thread-safe list with support for:
+            1) negative indexes (read from end).  "myList[-1]" gets the last value
+            2) modification while enumerating: enumerates a copy of the collection.
+            Taken from StackOverflow http://stackoverflow.com/questions/9995266/how-to-create-a-thread-safe-generic-list.
+            </summary> 
+            <typeparam name="TValue"></typeparam>
+        </member>
+        <member name="P:Indexer.aConcurrentList`1.Item(System.Int32)">
+            <summary>
+            support for negative indexes (read from end).  "myList[-1]" gets the last value
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Indexer.Document">
+            <summary>
+            A document that has been indexed by the index engine.
+            </summary>
+        </member>
+        <member name="M:Indexer.Document.#ctor">
+            <summary>
+            Creates an empty Document object.  Creation of the object structure is relegated to the application using the object.
+            </summary>
+        </member>
+        <member name="M:Indexer.Document.#ctor(System.String,System.String,System.String,System.String,System.String,System.Byte[])">
+            <summary>
+            Creates a populated Document object.  GUID and timestamp are added automatically.
+            </summary>
+            <param name="title">Title of the document.</param>
+            <param name="description">Description of the document.</param>
+            <param name="handle">URL or other handle to access the document on persistent storage (managed by the caller).</param>
+            <param name="source">Source of the document (managed by the caller)></param>
+            <param name="addedBy">Name of the user adding the document (managed by the caller).</param>
+            <param name="data">Byte array data from the source document.</param>
+        </member>
+        <member name="P:Indexer.Document.DocumentID">
+            <summary>
+            Integer uniquely representing the document; typically used if stored in a database.
+            </summary>
+        </member>
+        <member name="P:Indexer.Document.Title">
+            <summary>
+            Title of the document.  Supplied by the caller.
+            </summary>
+        </member>
+        <member name="P:Indexer.Document.Description">
+            <summary>
+            Free-form text description of the document.  Supplied by the caller.
+            </summary>
+        </member>
+        <member name="P:Indexer.Document.Handle">
+            <summary>
+            URL or other handle to use when attempting to reach the content.  Supplied by the caller.
+            </summary>
+        </member>
+        <member name="P:Indexer.Document.Source">
+            <summary>
+            Source of the content, i.e. YouTube, Vimeo, web, etc.  Supplied by the caller.
+            </summary>
+        </member>
+        <member name="P:Indexer.Document.AddedBy">
+            <summary>
+            Free-form text describing who added the document.  Supplied by the caller.
+            </summary>
+        </member>
+        <member name="P:Indexer.Document.ReferenceGuid">
+            <summary>
+            GUID for this document.  Assigned by the index engine.
+            </summary>
+        </member>
+        <member name="P:Indexer.Document.Added">
+            <summary>
+            UTC timestamp when the document was added.  Assigned by the index engine.
+            </summary>
+        </member>
+        <member name="P:Indexer.Document.Data">
+            <summary>
+            Document contents in byte array form.  
+            </summary>
+        </member>
+        <member name="T:Indexer.IndexEngine">
+            <summary>
+            Index engine.
+            </summary>
+        </member>
+        <member name="M:Indexer.IndexEngine.#ctor(System.String)">
+            <summary>
+            Instantiates the object.
+            </summary>
+            <param name="databaseFile">Path and filename of the Sqlite database.</param>
+        </member>
+        <member name="P:Indexer.IndexEngine.DatabaseFile">
+            <summary>
+            Path and filename of the Sqlite database.
+            </summary>
+        </member>
+        <member name="P:Indexer.IndexEngine.ConsoleDebug">
+            <summary>
+            Enable or disable console debugging.
+            </summary>
+        </member>
+    </members>
+</doc>

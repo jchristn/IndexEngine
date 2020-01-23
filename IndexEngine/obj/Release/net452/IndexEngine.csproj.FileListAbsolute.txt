@@ -5,7 +5,6 @@ C:\Code\Misc\IndexEngine\IndexEngine\bin\Release\net452\EntityFramework.dll
 C:\Code\Misc\IndexEngine\IndexEngine\bin\Release\net452\System.Data.SQLite.dll
 C:\Code\Misc\IndexEngine\IndexEngine\bin\Release\net452\System.Data.SQLite.EF6.dll
 C:\Code\Misc\IndexEngine\IndexEngine\bin\Release\net452\System.Data.SQLite.Linq.dll
-C:\Code\Misc\IndexEngine\IndexEngine\obj\Release\net452\IndexEngine.csproj.CoreCompileInputs.cache
 C:\Code\Misc\IndexEngine\IndexEngine\obj\Release\net452\IndexEngine.AssemblyInfoInputs.cache
 C:\Code\Misc\IndexEngine\IndexEngine\obj\Release\net452\IndexEngine.AssemblyInfo.cs
 C:\Code\Misc\IndexEngine\IndexEngine\obj\Release\net452\IndexEngine.csproj.CopyComplete
