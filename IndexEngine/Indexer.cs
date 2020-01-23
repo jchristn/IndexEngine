@@ -402,9 +402,7 @@ namespace Indexer
             int termsRecorded = 0;
             int termsTotal = 0;
             bool listAdded = false;
-
-            Console.WriteLine(doc.ToString());
-
+             
             try
             {
                 #region Setup
