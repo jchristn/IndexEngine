@@ -18,14 +18,13 @@ namespace Test
                 Console.Write("Filename: ");
                 filename = Console.ReadLine();
                 if (String.IsNullOrEmpty(filename)) return;
-                IndexEngine ie = new IndexEngine(filename);
+                IndexEngine ie = new IndexEngine(filename); 
                 ie.ConsoleDebug = true;
 
                 bool runForever = true;
                 while (runForever)
                 {
                     // Console.WriteLine("1234567890123456789012345678901234567890123456789012345678901234567890123456789");
-                    Console.WriteLine("Commands: q cls addfile addtext del threads search");
                     string userInput = UserInputString("Command", false);
 
                     Document doc = new Document();
@@ -36,6 +35,10 @@ namespace Test
 
                     switch (userInput.ToLower())
                     {
+                        case "?":
+                            Menu();
+                            break;
+
                         case "q":
                         case "quit":
                             runForever = false;
@@ -92,6 +95,15 @@ namespace Test
                             }
                             break;
 
+                        case "exists":
+                            Console.Write("Handle: ");
+                            string handle = Console.ReadLine();
+                            if (!String.IsNullOrEmpty(handle))
+                            {
+                                Console.WriteLine("Exists: " + ie.IsHandleIndexed(handle));
+                            }
+                            break;
+
                         default:
                             break;
                     }
@@ -108,6 +120,20 @@ namespace Test
                 Console.WriteLine("Press ENTER to exit");
                 Console.ReadLine();
             }
+        }
+
+        static void Menu()
+        {
+            Console.WriteLine("---");
+            Console.WriteLine("  q               quit, exit this application");
+            Console.WriteLine("  cls             clear the screen");
+            Console.WriteLine("  addfile         add a file to the index");
+            Console.WriteLine("  addtext         add text to the index");
+            Console.WriteLine("  del             delete from the index by GUID");
+            Console.WriteLine("  threads         display number of running index threads");
+            Console.WriteLine("  search          search for documents by terms");
+            Console.WriteLine("  exists          check if a document exists by its handle");
+            Console.WriteLine("");
         }
 
         static void LogException(Exception e)
@@ -129,7 +155,6 @@ namespace Test
             if (String.IsNullOrEmpty(file)) return null;
 
             byte[] data = File.ReadAllBytes(file);
-            if (data == null || data.Length < 1) return null;
 
             Document ret = new Document(
                 UserInputString("Title", false),
@@ -157,6 +182,7 @@ namespace Test
 
         static List<string> GatherTerms()
         {
+            Console.WriteLine("Press ENTER on an empty line to end");
             List<string> ret = new List<string>();
             while (true)
             {

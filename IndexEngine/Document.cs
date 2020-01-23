@@ -24,9 +24,9 @@ namespace Indexer
         /// <summary>
         /// Creates a populated Document object.  GUID and timestamp are added automatically.
         /// </summary>
-        /// <param name="title">Title of the document.</param>
+        /// <param name="title">Non-nullable title of the document.</param>
         /// <param name="description">Description of the document.</param>
-        /// <param name="handle">URL or other handle to access the document on persistent storage (managed by the caller).</param>
+        /// <param name="handle">Non-nullable URL or other handle to access the document on persistent storage (managed by the caller).</param>
         /// <param name="source">Source of the document (managed by the caller)></param>
         /// <param name="addedBy">Name of the user adding the document (managed by the caller).</param>
         /// <param name="data">Byte array data from the source document.</param>
@@ -38,12 +38,8 @@ namespace Indexer
             string addedBy,
             byte[] data)
         {
-            if (String.IsNullOrEmpty(title)) throw new ArgumentNullException("title");
-            if (String.IsNullOrEmpty(title)) throw new ArgumentNullException("description");
-            if (String.IsNullOrEmpty(title)) throw new ArgumentNullException("handle");
-            if (String.IsNullOrEmpty(title)) throw new ArgumentNullException("source");
-            if (String.IsNullOrEmpty(title)) throw new ArgumentNullException("addedBy");
-            if (data == null || data.Length < 1) throw new ArgumentNullException("data");
+            if (String.IsNullOrEmpty(title)) throw new ArgumentNullException("title"); 
+            if (String.IsNullOrEmpty(handle)) throw new ArgumentNullException("handle"); 
 
             Title = title;
             Description = description;
@@ -114,10 +110,16 @@ namespace Indexer
 
         public override string ToString()
         {
-            string ret = "";
-            ret += "  ID " + DocumentID + " " + Title + " " + Description + " " + Source + Environment.NewLine;
-            ret += "     " + Handle + Environment.NewLine;
-            ret += "     " + AddedBy + " " + Added + " " + ReferenceGuid;
+            string ret =
+                "---" + Environment.NewLine +
+                "  ID          : " + DocumentID + Environment.NewLine +
+                "  Title       : " + Title + Environment.NewLine +
+                "  Description : " + Description + Environment.NewLine +
+                "  Source      : " + Source + Environment.NewLine +
+                "  Handle      : " + Handle + Environment.NewLine +
+                "  Added By    : " + AddedBy + Environment.NewLine +
+                "  Added       : " + Added + Environment.NewLine +
+                "  GUID        : " + ReferenceGuid;
             return ret;
         }
 

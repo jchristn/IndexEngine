@@ -395,20 +395,21 @@ namespace Indexer
 
         private void ProcessSubmittedDocument(Document doc, List<string> tags)
         {
+            if (doc == null) throw new ArgumentNullException("doc");
+
             DateTime startTime = DateTime.Now;
             DateTime endTime = DateTime.Now;
             int termsRecorded = 0;
             int termsTotal = 0;
             bool listAdded = false;
 
+            Console.WriteLine(doc.ToString());
+
             try
             {
                 #region Setup
 
-                ProcessingThreadsCount++;
-                if (doc == null) throw new ArgumentNullException("doc");
-                if (doc.Data == null || doc.Data.Length < 1) throw new ArgumentNullException("Data");
-
+                ProcessingThreadsCount++; 
                 DocumentsProcessing.Add(doc.Title);
                 listAdded = true;
 
@@ -610,7 +611,7 @@ namespace Indexer
 
                 #region Submit-Remaining-Terms
 
-                if (tempDict != null && tempDict.Count >= 0)
+                if (tempDict != null && tempDict.Count > 0)
                 {
                     #region Drain-Remaining
 
