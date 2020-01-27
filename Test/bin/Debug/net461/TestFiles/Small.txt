@@ -1,0 +1,5 @@
+This is a very small text file that you can use to perform simple tests with IndexEngine.
+
+Feel free to add to this file and test!
+
+And thanks for using IndexEngine.

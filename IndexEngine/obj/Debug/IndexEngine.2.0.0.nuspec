@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>IndexEngine</id>
+    <version>2.0.0</version>
+    <authors>Joel Christner</authors>
+    <owners>Joel Christner</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE.md</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>https://github.com/jchristn/indexengine</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/jchristn/indexengine/master/assets/icon.ico</iconUrl>
+    <description>Index engine is a simple indexer written in C# using Sqlite as a storage repository.</description>
+    <copyright>(c)2020 Joel Christner</copyright>
+    <tags>index text search lucene solr elastic elasticsearch simple light</tags>
+    <repository type="Github" url="https://github.com/jchristn/indexengine" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.6.1">
+        <dependency id="SqliteHelper" version="1.1.0" exclude="Build,Analyzers" />
+        <dependency id="System.Data.SQLite" version="1.0.112" exclude="Build,Analyzers" />
+        <dependency id="System.Data.SQLite.Core" version="1.0.112" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="SqliteHelper" version="1.1.0" exclude="Build,Analyzers" />
+        <dependency id="System.Data.SQLite" version="1.0.112" exclude="Build,Analyzers" />
+        <dependency id="System.Data.SQLite.Core" version="1.0.112" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Code\Misc\IndexEngine-2.0\IndexEngine\bin\Debug\net461\IndexEngine.dll" target="lib\net461\IndexEngine.dll" />
+    <file src="C:\Code\Misc\IndexEngine-2.0\IndexEngine\bin\Debug\netstandard2.0\IndexEngine.dll" target="lib\netstandard2.0\IndexEngine.dll" />
+    <file src="C:\Code\Misc\IndexEngine-2.0\IndexEngine\bin\Debug\netstandard2.0\IndexEngine.xml" target="lib\netstandard2.0\IndexEngine.xml" />
+    <file src="C:\Code\Misc\IndexEngine-2.0\LICENSE.md" target="LICENSE.md" />
+  </files>
+</package>

@@ -7,11 +7,20 @@
 [nuget]:     https://www.nuget.org/packages/IndexEngine
 [nuget-img]: https://badge.fury.io/nu/Object.svg
 
-IndexEngine is a simple indexer written in C# using Sqlite as a storage repository.  As of release 1.0.5, IndexEngine is targeted to both .NET Core 2.0 and .NET Framework 4.5.2.
+IndexEngine is a lightweight document and text indexing platform written in C# targeted to both .NET Core and .NET Framework.  IndexEngine uses Sqlite as a storage repository for index data. 
 
-## New in v1.0.12
+IndexEngine does NOT provide storage of the original documents.
 
-- Fix to allow empty documents to be added (thanks @teub!)
+## New in v2.0.0
+
+- Breaking changes, major refactor
+- Retarget from .NET 4.5.2 to .NET 4.6.1 (in addition to .NET Core)
+- Migrate from unmanaged database layer to SqliteHelper
+- Added support for IDisposable
+- Database backup API
+- Added index start and max results to search
+- External logging via Logger
+- Sync and async APIs for adding documents
 
 ## Help or feedback
 
@@ -19,7 +28,7 @@ First things first - do you need help or have feedback?  Contact me at joel dot 
 
 ## Performance and scale
 
-It's pretty quick :)  It hasn't been tested with huge document libraries or anything, so I'd recommend testing thoroughly before using in production. 
+It's pretty quick :)  It hasn't been tested with large document libraries or large files, so I'd recommend testing thoroughly before using in production. 
 
 ## Simple Example
 ```
@@ -29,6 +38,7 @@ IndexEngine ie = new IndexEngine("idx.db");
 
 // Add a document
 Document d = new Document(
+  "GUID",              // GUID supplied by the caller
   "Title",             // i.e. Mark Twain
   "Description",       // i.e. A Great Book
   "File Path or URL",  // i.e. C:\Documents\MarkTwain.txt
@@ -36,26 +46,31 @@ Document d = new Document(
   "AddedBy",           // i.e. Joel
   Encoding.UTF8.GetBytes("This is some sample data for indexing")
 );
-ie.SubmitDocument(d);       // async, returns immediately
-ie.SubmitDocumentSync(d);   // sync, returns after completion
+await ie.AddAsync(d);  // async
+ie.Add(d);             // sync
 
 // Search the index
 List<string> terms = new List<string> { "some", "data" };
-List<Document> results = ie.SearchIndex(terms, null);
+List<Document> results = ie.Search(terms);
 foreach (Document d in results) Console.WriteLine(d.ToString());
 
+// Find document GUIDs where terms can be found
+List<string> guids = i.e.GetDocumentGuidsByTerms(terms);
+foreach (string s in results) Console.WriteLine(s);
+
 // List number of threads actively indexing documents
-Console.WriteLine("Number of documents being indexed right now: " + ie.GetProcessingThreadsCount());
+Console.WriteLine("Number of documents being indexed now: " + ie.CurrentIndexingThreads);
 
 // Get the names of docs that are currently being indexed
-List<string> activeDocs = ie.GetProcessingDocumentsList();
+IEnumerable<string> activeDocs = ie.DocumentsIndexing();
 
 // Delete documents from the index
 ie.DeleteDocumentByGuid("abcd1234...");
 ie.DeleteDocumentByHandle("C:\\Documents\\MarkTwain.txt");
 
 // Retrieve documents
-Document d = RetrieveDocumentByGuid("abcd1234...");
-Document d = RetrieveDocumentByHandle("C:\\Documents\\MarkTwain.txt");
+Document d = GetDocumentByGuid("abcd1234...");
+Document d = GetDocumentByHandle("C:\\Documents\\MarkTwain.txt");
+bool b = IsGuidIndexed("abcd1234...");
 bool b = IsHandleIndexed("C:\\Documents\\MarkTwain.txt");
 ```

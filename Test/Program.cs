@@ -14,18 +14,15 @@ namespace Test
         {
             try
             {
-                string filename = "";
-                Console.Write("Filename: ");
-                filename = Console.ReadLine();
-                if (String.IsNullOrEmpty(filename)) return;
+                string filename = InputString("Filename", false);
                 IndexEngine ie = new IndexEngine(filename); 
-                ie.ConsoleDebug = true;
+                ie.Logger = Logger;
 
                 bool runForever = true;
                 while (runForever)
                 {
                     // Console.WriteLine("1234567890123456789012345678901234567890123456789012345678901234567890123456789");
-                    string userInput = UserInputString("Command", false);
+                    string userInput = InputString("Command [? for help]", false);
 
                     Document doc = new Document();
                     List<Document> results = new List<Document>();
@@ -51,23 +48,28 @@ namespace Test
 
                         case "addfile":
                             doc = BuildFileDocument();
-                            ie.SubmitDocument(doc);
+                            ie.Add(doc);
+                            break;
+
+                        case "addfile async":
+                            doc = BuildFileDocument();
+                            ie.AddAsync(doc).Wait();
                             break;
 
                         case "addtext":
                             doc = BuildStringDocument();
-                            ie.SubmitDocument(doc);
+                            ie.Add(doc);
                             break;
 
                         case "del":
-                            guid = UserInputString("GUID", false);
+                            guid = InputString("GUID", false);
                             ie.DeleteDocumentByGuid(guid);
                             break;
 
                         case "threads":
-                            Console.WriteLine("Active document processing jobs: " + ie.GetProcessingThreadsCount());
-                            Console.WriteLine("Documents:");
-                            activeDocs = ie.GetProcessingDocumentsList();
+                            Console.WriteLine("Active document processing jobs: " + ie.CurrentIndexingThreads + "/" + ie.MaxIndexingThreads);
+                            Console.WriteLine("Documents being processed:");
+                            activeDocs = ie.DocumentsIndexing.ToList();
                             if (activeDocs != null && activeDocs.Count > 0)
                             {
                                 foreach (string curr in activeDocs) Console.WriteLine("  " + curr);
@@ -81,7 +83,7 @@ namespace Test
                         case "search":
                             terms = GatherTerms();
                             if (terms == null || terms.Count < 1) break;
-                            results = ie.SearchIndex(terms, null);
+                            results = ie.Search(terms);
                             if (results == null || results.Count < 1)
                             {
                                 Console.WriteLine("No results");
@@ -104,6 +106,10 @@ namespace Test
                             }
                             break;
 
+                        case "backup":
+                            ie.Backup(InputString("Destination filename", false));
+                            break;
+
                         default:
                             break;
                     }
@@ -124,7 +130,7 @@ namespace Test
 
         static void Menu()
         {
-            Console.WriteLine("---");
+            Console.WriteLine("--- Available Commands ---");
             Console.WriteLine("  q               quit, exit this application");
             Console.WriteLine("  cls             clear the screen");
             Console.WriteLine("  addfile         add a file to the index");
@@ -133,6 +139,7 @@ namespace Test
             Console.WriteLine("  threads         display number of running index threads");
             Console.WriteLine("  search          search for documents by terms");
             Console.WriteLine("  exists          check if a document exists by its handle");
+            Console.WriteLine("  backup          backup the index to another file");
             Console.WriteLine("");
         }
 
@@ -157,11 +164,12 @@ namespace Test
             byte[] data = File.ReadAllBytes(file);
 
             Document ret = new Document(
-                UserInputString("Title", false),
-                UserInputString("Description", false),
+                InputString("GUID", true),
+                InputString("Title", false),
+                InputString("Description", false),
                 file,
-                UserInputString("Source", false),
-                UserInputString("AddedBy", false),
+                InputString("Source", false),
+                InputString("AddedBy", false),
                 data);
 
             return ret;
@@ -170,12 +178,13 @@ namespace Test
         static Document BuildStringDocument()
         {
             Document ret = new Document(
-                UserInputString("Title", false),
-                UserInputString("Description", false),
+                InputString("GUID", true),
+                InputString("Title", false),
+                InputString("Description", false),
                 "String input",
-                UserInputString("Source", false),
-                UserInputString("AddedBy", false),
-                Encoding.UTF8.GetBytes(UserInputString("Data", false)));
+                InputString("Source", false),
+                InputString("AddedBy", false),
+                Encoding.UTF8.GetBytes(InputString("Data", false)));
 
             return ret;
         }
@@ -186,7 +195,7 @@ namespace Test
             List<string> ret = new List<string>();
             while (true)
             {
-                string term = UserInputString("Term", true);
+                string term = InputString("Term", true);
                 if (!String.IsNullOrEmpty(term))
                 {
                     ret.Add(term);
@@ -197,7 +206,7 @@ namespace Test
             return ret;
         }
 
-        static string UserInputString(string prompt, bool allowNull)
+        static string InputString(string prompt, bool allowNull)
         {
             Console.Write(prompt + ": ");
             while (true)
@@ -206,6 +215,11 @@ namespace Test
                 if (String.IsNullOrEmpty(input) && !allowNull) continue;
                 return input;
             }
+        }
+
+        static void Logger(string msg)
+        {
+            Console.WriteLine(msg);
         }
     }
 }

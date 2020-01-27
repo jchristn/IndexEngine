@@ -1,0 +1,14 @@
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\obj\Debug\net461\IndexEngine.AssemblyInfoInputs.cache
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\obj\Debug\net461\IndexEngine.AssemblyInfo.cs
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\bin\Debug\net461\IndexEngine.dll
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\bin\Debug\net461\IndexEngine.pdb
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\bin\Debug\net461\EntityFramework.SqlServer.dll
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\bin\Debug\net461\EntityFramework.dll
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\bin\Debug\net461\SqliteWrapper.dll
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\bin\Debug\net461\System.Data.SQLite.dll
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\bin\Debug\net461\System.Data.SQLite.EF6.dll
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\bin\Debug\net461\System.Data.SQLite.Linq.dll
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\obj\Debug\net461\IndexEngine.csproj.CopyComplete
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\obj\Debug\net461\IndexEngine.dll
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\obj\Debug\net461\IndexEngine.pdb
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\obj\Debug\net461\IndexEngine.csprojAssemblyReference.cache

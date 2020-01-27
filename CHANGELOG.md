@@ -2,11 +2,22 @@
 
 ## Current Version
 
+v2.0.0
+
+- Breaking changes, major refactor
+- Retarget from .NET 4.5.2 to .NET 4.6.1 (in addition to .NET Core)
+- Migrate from unmanaged database layer to SqliteHelper
+- Added support for IDisposable
+- Database backup API
+- Added index start and max results to search
+- External logging via Logger
+- Sync and async APIs for adding documents
+
+## Previous Versions
+
 v1.0.12
 
 - Fix (more) to allow empty documents to be added (thanks @teub!)
-
-## Previous Versions
 
 v1.0.11
 

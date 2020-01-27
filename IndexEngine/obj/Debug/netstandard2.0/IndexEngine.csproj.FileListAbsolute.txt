@@ -6,3 +6,12 @@ C:\code\misc\IndexEngine\IndexEngine\obj\Debug\netstandard2.0\IndexEngine.Assemb
 C:\code\misc\IndexEngine\IndexEngine\obj\Debug\netstandard2.0\IndexEngine.dll
 C:\code\misc\IndexEngine\IndexEngine\obj\Debug\netstandard2.0\IndexEngine.pdb
 C:\code\misc\IndexEngine\IndexEngine\obj\Debug\netstandard2.0\IndexEngine.csprojAssemblyReference.cache
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\obj\Debug\netstandard2.0\IndexEngine.csprojAssemblyReference.cache
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\obj\Debug\netstandard2.0\IndexEngine.AssemblyInfoInputs.cache
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\obj\Debug\netstandard2.0\IndexEngine.AssemblyInfo.cs
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\bin\Debug\netstandard2.0\IndexEngine.deps.json
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\bin\Debug\netstandard2.0\IndexEngine.dll
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\bin\Debug\netstandard2.0\IndexEngine.pdb
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\obj\Debug\netstandard2.0\IndexEngine.dll
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\obj\Debug\netstandard2.0\IndexEngine.pdb
+C:\Code\Misc\IndexEngine-2.0\IndexEngine\bin\Debug\netstandard2.0\IndexEngine.xml
