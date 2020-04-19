@@ -2,10 +2,7 @@
 
 # IndexEngine
 
-[![][nuget-img]][nuget]
-
-[nuget]:     https://www.nuget.org/packages/IndexEngine
-[nuget-img]: https://badge.fury.io/nu/Object.svg
+[![NuGet Version](https://img.shields.io/nuget/v/IndexEngine.svg?style=flat)](https://www.nuget.org/packages/IndexEngine/) [![NuGet](https://img.shields.io/nuget/dt/IndexEngine.svg)](https://www.nuget.org/packages/IndexEngine) 
 
 IndexEngine is a lightweight document and text indexing platform written in C# targeted to both .NET Core and .NET Framework.  IndexEngine uses Sqlite as a storage repository for index data. 
 
