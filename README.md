@@ -8,16 +8,10 @@ IndexEngine is a lightweight document and text indexing platform written in C# t
 
 IndexEngine does NOT provide storage of the original documents.
 
-## New in v2.0.0
+## New in v2.1.0
 
-- Breaking changes, major refactor
-- Retarget from .NET 4.5.2 to .NET 4.6.1 (in addition to .NET Core)
-- Migrate from unmanaged database layer to SqliteHelper
-- Added support for IDisposable
-- Database backup API
-- Added index start and max results to search
-- External logging via Logger
-- Sync and async APIs for adding documents
+- Move to .NET Standard 2.1 and migrate to Microsoft.Data.Sqlite
+- Bugfixes
 
 ## Help or feedback
 

@@ -27,3 +27,5 @@ C:\Code\Misc\IndexEngine-2.0\Test\obj\Release\net461\Test.AssemblyInfo.cs
 C:\Code\Misc\IndexEngine-2.0\Test\obj\Release\net461\Test.csproj.CopyComplete
 C:\Code\Misc\IndexEngine-2.0\Test\obj\Release\net461\Test.exe
 C:\Code\Misc\IndexEngine-2.0\Test\obj\Release\net461\Test.pdb
+C:\code\Misc\IndexEngine-3.0\Test\obj\Release\net461\Test.exe
+C:\code\Misc\IndexEngine-3.0\Test\obj\Release\net461\Test.pdb

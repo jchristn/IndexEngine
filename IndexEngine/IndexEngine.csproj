@@ -1,18 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageProjectUrl>https://github.com/jchristn/indexengine</PackageProjectUrl>
     <RepositoryUrl>https://github.com/jchristn/indexengine</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
     <PackageLicenseUrl></PackageLicenseUrl>
-    <Version>2.0.0</Version>
+    <Version>2.1.0</Version>
     <Authors>Joel Christner</Authors>
     <Description>Index engine is a simple indexer written in C# using Sqlite as a storage repository.</Description>
     <Copyright>(c)2020 Joel Christner</Copyright>
     <PackageTags>index text search lucene solr elastic elasticsearch simple light</PackageTags>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>Move to .NET Standard 2.1 and migrate to Microsoft.Data.Sqlite</PackageReleaseNotes>
     <PackageIconUrl>https://raw.githubusercontent.com/jchristn/indexengine/master/assets/icon.ico</PackageIconUrl>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
@@ -22,9 +22,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SqliteHelper" Version="1.1.0" />
-    <PackageReference Include="System.Data.SQLite" Version="1.0.112" />
-    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.112" />
+    <PackageReference Include="SqliteHelper" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>

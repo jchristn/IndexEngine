@@ -2,6 +2,13 @@
 
 ## Current Version
 
+v2.1.0
+
+- Move to .NET Standard 2.1 and migrate to Microsoft.Data.Sqlite
+- Bugfixes
+
+## Previous Versions
+
 v2.0.0
 
 - Breaking changes, major refactor
@@ -13,7 +20,6 @@ v2.0.0
 - External logging via Logger
 - Sync and async APIs for adding documents
 
-## Previous Versions
 
 v1.0.12
 

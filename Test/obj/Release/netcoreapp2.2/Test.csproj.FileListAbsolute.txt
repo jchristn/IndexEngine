@@ -35,3 +35,5 @@ C:\Code\Misc\IndexEngine-2.0\Test\obj\Release\netcoreapp2.2\Test.AssemblyInfo.cs
 C:\Code\Misc\IndexEngine-2.0\Test\obj\Release\netcoreapp2.2\Test.csproj.CopyComplete
 C:\Code\Misc\IndexEngine-2.0\Test\obj\Release\netcoreapp2.2\Test.dll
 C:\Code\Misc\IndexEngine-2.0\Test\obj\Release\netcoreapp2.2\Test.pdb
+C:\code\Misc\IndexEngine-3.0\Test\obj\Release\netcoreapp2.2\Test.dll
+C:\code\Misc\IndexEngine-3.0\Test\obj\Release\netcoreapp2.2\Test.pdb

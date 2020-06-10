@@ -1,0 +1,7 @@
+C:\code\misc\IndexEngine-2.1\IndexEngine\bin\Debug\netstandard2.1\IndexEngine.deps.json
+C:\code\misc\IndexEngine-2.1\IndexEngine\bin\Debug\netstandard2.1\IndexEngine.dll
+C:\code\misc\IndexEngine-2.1\IndexEngine\bin\Debug\netstandard2.1\IndexEngine.pdb
+C:\code\misc\IndexEngine-2.1\IndexEngine\obj\Debug\netstandard2.1\IndexEngine.AssemblyInfoInputs.cache
+C:\code\misc\IndexEngine-2.1\IndexEngine\obj\Debug\netstandard2.1\IndexEngine.AssemblyInfo.cs
+C:\code\misc\IndexEngine-2.1\IndexEngine\obj\Debug\netstandard2.1\IndexEngine.dll
+C:\code\misc\IndexEngine-2.1\IndexEngine\obj\Debug\netstandard2.1\IndexEngine.pdb

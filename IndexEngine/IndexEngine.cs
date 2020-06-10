@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using SqliteWrapper;
+using SqliteHelper;
 
 namespace Indexer
 {
@@ -60,7 +60,7 @@ namespace Indexer
             {
                 lock (_Lock)
                 {
-                    IEnumerable<string> ret = _ProcessingTasks.Keys.ToList();
+                    IEnumerable<string> ret = _DocumentsIndexing;
                     return ret;
                 }
             }
@@ -109,8 +109,14 @@ namespace Indexer
             }
             set
             {
-                if (value == null) throw new ArgumentNullException(nameof(IgnoreWords));
-                _IgnoreWords = value;
+                if (value == null)
+                {
+                    _IgnoreWords = new List<string>();
+                }
+                else
+                {
+                    _IgnoreWords = value;
+                }
             }
         }
 
@@ -118,14 +124,15 @@ namespace Indexer
 
         #region Private-Members
 
+        private string _Header = "[IndexEngine] ";
         private CancellationTokenSource _TokenSource = new CancellationTokenSource();
         private CancellationToken _Token;
         private string _DatabaseFilename = null;
         private DatabaseClient _Database = null;
         private int _MaxThreads = 32;
         private int _CurrentThreads = 0;
-        private readonly object _Lock = new object(); 
-        private Dictionary<string, Task> _ProcessingTasks = new Dictionary<string, Task>();
+        private readonly object _Lock = new object();
+        private List<string> _DocumentsIndexing = new List<string>();
         private int _TermMinimumLength = 3;
         private char[] _TermDelimiters = new char[] { '\r', '\n', ' ', '?', '\'', '\"', '.', ',', ';' };
         private List<string> _IgnoreWords = new List<string>
@@ -152,8 +159,7 @@ namespace Indexer
             _DatabaseFilename = databaseFile;
             _Database = new DatabaseClient(databaseFile);
             _CurrentThreads = 0;
-
-            // initialize tables
+             
             CreateDocumentTable();
             CreateIndexEntriesTable();
         }
@@ -188,14 +194,13 @@ namespace Indexer
         public void Add(Document document, List<string> tags)
         {
             if (document == null) throw new ArgumentNullException(nameof(document));
-            Task task = AddDocumentToIndex(document, tags);
 
             lock (_Lock)
             {
-                _ProcessingTasks.Add(document.GUID, task);
+                _DocumentsIndexing.Add(document.GUID); 
             }
 
-            Task.Run(() => task, _Token).Wait();
+            Task.Run(() => AddDocumentToIndex(document, tags), _Token);
         }
 
         /// <summary>
@@ -218,14 +223,12 @@ namespace Indexer
         {
             if (document == null) throw new ArgumentNullException(nameof(document));
 
-            Task task = AddDocumentToIndex(document, tags);
-
             lock (_Lock)
             {
-                _ProcessingTasks.Add(document.GUID, task);
+                _DocumentsIndexing.Add(document.GUID);
             }
 
-            await Task.Run(() => task, _Token); 
+            await Task.Run(() => AddDocumentToIndex(document, tags), _Token); 
         }
 
         /// <summary>
@@ -267,7 +270,7 @@ namespace Indexer
             List<string> guids = GetDocumentGuidsByTerms(terms, indexStart, maxResults, filter);
             if (guids == null || guids.Count < 1)
             {
-                Log("[IndexEngine] no document GUIDs found for the supplied terms");
+                Log("no document GUIDs found for the supplied terms");
                 return new List<Document>();
             }
 
@@ -280,7 +283,7 @@ namespace Indexer
              
             List<Document> ret = new List<Document>();
             if (result != null && result.Rows.Count > 0) ret = Document.FromDataTable(result);
-            Log("[IndexEngine] returning " + ret.Count + " documents for search query");
+            Log("returning " + ret.Count + " documents for search query");
             return ret;
 
             #endregion
@@ -327,7 +330,7 @@ namespace Indexer
                 }
             }
 
-            Log("[IndexEngine] returning " + ret.Count + " document GUIDs for terms query");
+            Log("returning " + ret.Count + " document GUIDs for terms query");
             return ret; 
         }
 
@@ -338,7 +341,7 @@ namespace Indexer
         public void DeleteDocumentByGuid(string guid)
         {
             if (String.IsNullOrEmpty(guid)) throw new ArgumentNullException(nameof(guid));
-            Log("[IndexEngine] deleting document GUID " + guid);
+            Log("deleting document GUID " + guid);
             Expression eIndexEntries = new Expression("docs_guid", Operators.Equals, guid);
             Expression eDocs = new Expression("guid", Operators.Equals, guid);
             _Database.Delete("index_entries", eIndexEntries);
@@ -353,7 +356,7 @@ namespace Indexer
         public void DeleteDocumentByHandle(string handle)
         {
             if (String.IsNullOrEmpty(handle)) throw new ArgumentNullException(nameof(handle));
-            Log("[IndexEngine] deleting documents with handle " + handle);
+            Log("deleting documents with handle " + handle);
             Document curr = GetDocumentByHandle(handle);
             if (curr == null) return;
 
@@ -376,7 +379,7 @@ namespace Indexer
             DataTable result = _Database.Select("docs", null, null, null, e, null);
             if (result == null) 
             {
-                Log("[IndexEngine] document with GUID " + guid + " not found");
+                Log("document with GUID " + guid + " not found");
                 return null;
             }
 
@@ -387,7 +390,7 @@ namespace Indexer
             }
             else
             {
-                Log("[IndexEngine] returning document with GUID " + retList[0].GUID);
+                Log("returning document with GUID " + retList[0].GUID);
                 return retList[0]; 
             }
         }
@@ -404,7 +407,7 @@ namespace Indexer
             DataTable result = _Database.Select("docs", null, null, null, e, null);
             if (result == null || result.Rows.Count < 1)
             {
-                Log("[IndexEngine] document with handle " + handle + " not found");
+                Log("document with handle " + handle + " not found");
                 return null;
             }
 
@@ -415,7 +418,7 @@ namespace Indexer
             }
             else
             {
-                Log("[IndexEngine] returning document with handle " + ret[0].Handle);
+                Log("returning document with handle " + ret[0].Handle);
                 return ret[0];
             }
         }
@@ -456,7 +459,7 @@ namespace Indexer
         public long GetTermReferenceCount(string term)
         {
             if (String.IsNullOrEmpty(term)) throw new ArgumentNullException(nameof(term));
-            string query = "SELECT COUNT(*) AS num_entries FROM index_entries WHERE term = '" + DatabaseClient.SanitizeString(term.ToLower()) + "'";
+            string query = "SELECT COUNT(*) AS num_entries FROM index_entries WHERE term = '" + _Database.SanitizeString(term.ToLower()) + "'";
             DataTable result = _Database.Query(query);
             if (result != null && result.Rows != null && result.Rows.Count > 0 && result.Columns.Contains("num_entries"))
             {
@@ -490,13 +493,13 @@ namespace Indexer
         {
             if (disposing)
             {
-                Log("[IndexEngine] disposing");
+                Log("disposing");
 
                 _TokenSource.Cancel();
 
                 lock (_Lock)
                 {
-                    _ProcessingTasks = null;
+                    _DocumentsIndexing = null;
                 }
             }
         }
@@ -507,9 +510,9 @@ namespace Indexer
         {
             if (doc == null) throw new ArgumentNullException(nameof(doc));
 
-            string header = "[IndexEngine] [" + doc.GUID + "] ";
+            string header = "[" + doc.GUID + "] ";
             Log(header + "beginning processing");
-
+             
             DateTime startTime = DateTime.Now;
             DateTime endTime = DateTime.Now;
             int termsRecorded = 0;
@@ -623,9 +626,10 @@ namespace Indexer
                 Log(header + "detected " + termsTotal + " terms in document");
 
                 string query = "";
-                string guid = DatabaseClient.SanitizeString(doc.GUID);
+                string guid = _Database.SanitizeString(doc.GUID);
                 int batchSize = 1000;    // we can make this configurable later
                 Dictionary<string, int> tempDict = new Dictionary<string, int>();
+
                 while (termsRecorded < termsTotal)
                 {
                     if (tempDict.Count >= batchSize)
@@ -643,14 +647,14 @@ namespace Indexer
                             if (termsAdded == 0)
                             {
                                 query +=
-                                    "('" + DatabaseClient.SanitizeString(currKvp.Key).ToLower() + "'," +
+                                    "('" + _Database.SanitizeString(currKvp.Key).ToLower() + "'," +
                                     currKvp.Value + "," +
                                     "'" + guid + "')";
                             }
                             else
                             {
                                 query +=
-                                    ",('" + DatabaseClient.SanitizeString(currKvp.Key).ToLower() + "'," +
+                                    ",('" + _Database.SanitizeString(currKvp.Key).ToLower() + "'," +
                                     currKvp.Value + "," +
                                     "'" + guid + "')";
                             }
@@ -659,6 +663,7 @@ namespace Indexer
                         }
 
                         _Database.Query(query);
+
                         Log(header + "recorded " + termsRecorded + "/" + termsTotal + " terms");
                         tempDict = new Dictionary<string, int>();
 
@@ -696,14 +701,14 @@ namespace Indexer
                         if (termsAdded == 0)
                         {
                             query +=
-                                "('" + DatabaseClient.SanitizeString(currKvp.Key).ToLower() + "'," +
+                                "('" + _Database.SanitizeString(currKvp.Key).ToLower() + "'," +
                                 currKvp.Value + "," +
                                 "'" + guid + "')";
                         }
                         else
                         {
                             query +=
-                                ",('" + DatabaseClient.SanitizeString(currKvp.Key).ToLower() + "'," +
+                                ",('" + _Database.SanitizeString(currKvp.Key).ToLower() + "'," +
                                 currKvp.Value + "," +
                                 "'" + guid + "')";
                         }
@@ -712,7 +717,7 @@ namespace Indexer
                     }
 
                     _Database.Query(query);
-                    Log("recorded " + termsRecorded + "/" + termsTotal + " terms");
+                    Log(header + "recorded " + termsRecorded + "/" + termsTotal + " terms");
                     tempDict = new Dictionary<string, int>();
 
                     #endregion
@@ -737,7 +742,12 @@ namespace Indexer
 
                 lock (_Lock)
                 { 
-                    if (_ProcessingTasks.ContainsKey(doc.GUID)) _ProcessingTasks.Remove(doc.GUID);
+                    if (_DocumentsIndexing != null 
+                        && _DocumentsIndexing.Count > 0
+                        && _DocumentsIndexing.Contains(doc.GUID))
+                    {
+                        _DocumentsIndexing.Remove(doc.GUID);
+                    }
                 }
 
                 endTime = DateTime.Now;
@@ -810,7 +820,7 @@ namespace Indexer
 
         private void Log(string msg)
         {
-            Logger?.Invoke(msg);
+            Logger?.Invoke(_Header + msg);
         }
          
         #endregion

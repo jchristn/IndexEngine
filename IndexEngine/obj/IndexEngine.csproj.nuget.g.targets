@@ -3,11 +3,4 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
-  <ImportGroup Condition=" '$(TargetFramework)' == 'net461' AND '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)entityframework\6.3.0\buildTransitive\EntityFramework.targets" Condition="Exists('$(NuGetPackageRoot)entityframework\6.3.0\buildTransitive\EntityFramework.targets')" />
-    <Import Project="$(NuGetPackageRoot)system.data.sqlite.core\1.0.112\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('$(NuGetPackageRoot)system.data.sqlite.core\1.0.112\build\net46\System.Data.SQLite.Core.targets')" />
-  </ImportGroup>
-  <ImportGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' AND '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="C:\Program Files\dotnet\sdk\NuGetFallbackFolder\netstandard.library\2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('C:\Program Files\dotnet\sdk\NuGetFallbackFolder\netstandard.library\2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
-  </ImportGroup>
 </Project>
