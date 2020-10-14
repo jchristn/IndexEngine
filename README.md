@@ -22,7 +22,7 @@ First things first - do you need help or have feedback?  Contact me at joel dot 
 It's pretty quick :)  It hasn't been tested with large document libraries or large files, so I'd recommend testing thoroughly before using in production. 
 
 ## Simple Example
-```
+```csharp
 using Indexer;
 
 IndexEngine ie = new IndexEngine("idx.db");
