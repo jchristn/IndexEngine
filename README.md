@@ -8,10 +8,10 @@ IndexEngine is a lightweight document and text indexing platform written in C# t
 
 IndexEngine does NOT provide storage of the original documents.
 
-## New in v2.1.0
+## New in v2.1.3
 
-- Move to .NET Standard 2.1 and migrate to Microsoft.Data.Sqlite
-- Bugfixes
+- .NET 5 support
+- Migrate to ORM
 
 ## Help or feedback
 

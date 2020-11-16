@@ -1,0 +1,9 @@
+C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\netcoreapp3.1\IndexEngine.deps.json
+C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\netcoreapp3.1\IndexEngine.dll
+C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\netcoreapp3.1\IndexEngine.pdb
+C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\netcoreapp3.1\IndexEngine.csprojAssemblyReference.cache
+C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\netcoreapp3.1\IndexEngine.AssemblyInfoInputs.cache
+C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\netcoreapp3.1\IndexEngine.AssemblyInfo.cs
+C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\netcoreapp3.1\IndexEngine.csproj.CoreCompileInputs.cache
+C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\netcoreapp3.1\IndexEngine.dll
+C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\netcoreapp3.1\IndexEngine.pdb

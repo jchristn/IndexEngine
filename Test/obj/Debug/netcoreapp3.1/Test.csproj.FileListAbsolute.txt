@@ -16,7 +16,6 @@ C:\code\misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\Test.runtimeconfig.dev
 C:\code\misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\Test.dll
 C:\code\misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\Test.pdb
 C:\code\misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\Microsoft.Data.Sqlite.dll
-C:\code\misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\SqliteHelper.dll
 C:\code\misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\SQLitePCLRaw.batteries_v2.dll
 C:\code\misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\SQLitePCLRaw.nativelibrary.dll
 C:\code\misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\SQLitePCLRaw.core.dll
@@ -42,3 +41,13 @@ C:\code\misc\IndexEngine-2.1\Test\obj\Debug\netcoreapp3.1\Test.csproj.CopyComple
 C:\code\misc\IndexEngine-2.1\Test\obj\Debug\netcoreapp3.1\Test.dll
 C:\code\misc\IndexEngine-2.1\Test\obj\Debug\netcoreapp3.1\Test.pdb
 C:\code\misc\IndexEngine-2.1\Test\obj\Debug\netcoreapp3.1\Test.genruntimeconfig.cache
+C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\DatabaseWrapper.Core.dll
+C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\DatabaseWrapper.Sqlite.dll
+C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\WatsonORM.Core.dll
+C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\WatsonORM.Sqlite.dll
+C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\netcoreapp3.1\runtimes\linux-mips64\native\libe_sqlite3.so
+C:\Code\Misc\IndexEngine-2.1\Test\obj\Debug\netcoreapp3.1\Test.csproj.CoreCompileInputs.cache

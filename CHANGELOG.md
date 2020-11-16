@@ -2,12 +2,17 @@
 
 ## Current Version
 
+v2.1.3
+
+- .NET 5 support
+- Migrate to ORM
+
+## Previous Versions
+
 v2.1.0
 
 - Move to .NET Standard 2.1 and migrate to Microsoft.Data.Sqlite
 - Bugfixes
-
-## Previous Versions
 
 v2.0.0
 

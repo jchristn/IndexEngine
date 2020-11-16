@@ -6,7 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using SqliteHelper;
+using Watson.ORM.Sqlite;
+using Watson.ORM.Core;
 
 namespace Indexer
 {
@@ -127,21 +128,16 @@ namespace Indexer
         private string _Header = "[IndexEngine] ";
         private CancellationTokenSource _TokenSource = new CancellationTokenSource();
         private CancellationToken _Token;
-        private string _DatabaseFilename = null;
-        private DatabaseClient _Database = null;
+
+        private string _DbFilename = null;
+        private DatabaseSettings _DbSettings = null;
+        private WatsonORM _ORM = null;
+
         private int _MaxThreads = 32;
         private int _CurrentThreads = 0;
         private readonly object _Lock = new object();
         private List<string> _DocumentsIndexing = new List<string>();
         private int _TermMinimumLength = 3;
-        private char[] _TermDelimiters = new char[] { '\r', '\n', ' ', '?', '\'', '\"', '.', ',', ';' };
-        private List<string> _IgnoreWords = new List<string>
-        {
-            "a",
-            "an",
-            "and",
-            "the"
-        };
 
         #endregion
 
@@ -156,12 +152,16 @@ namespace Indexer
             if (String.IsNullOrEmpty(databaseFile)) throw new ArgumentNullException(databaseFile);
 
             _Token = _TokenSource.Token;
-            _DatabaseFilename = databaseFile;
-            _Database = new DatabaseClient(databaseFile);
+            _DbFilename = databaseFile;
+            _DbSettings = new DatabaseSettings(_DbFilename);
+            _ORM = new WatsonORM(_DbSettings);
             _CurrentThreads = 0;
-             
-            CreateDocumentTable();
-            CreateIndexEntriesTable();
+
+            _ORM.InitializeDatabase();
+            _ORM.InitializeTable(typeof(Document));
+            _ORM.InitializeTable(typeof(IndexEntry));
+
+            _ORM.Query("PRAGMA journal_mode = TRUNCATE");
         }
 
         #endregion
@@ -197,7 +197,7 @@ namespace Indexer
 
             lock (_Lock)
             {
-                _DocumentsIndexing.Add(document.GUID); 
+                _DocumentsIndexing.Add(document.GUID);
             }
 
             Task.Run(() => AddDocumentToIndex(document, tags), _Token);
@@ -228,7 +228,7 @@ namespace Indexer
                 _DocumentsIndexing.Add(document.GUID);
             }
 
-            await Task.Run(() => AddDocumentToIndex(document, tags), _Token); 
+            await Task.Run(() => AddDocumentToIndex(document, tags), _Token);
         }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace Indexer
         /// <param name="maxResults">Maximum number of records to return.</param>
         /// <param name="filter">Database filters.</param> 
         /// <returns>List of documents.</returns>
-        public List<Document> Search(List<string> terms, int? indexStart, int? maxResults, Expression filter)
+        public List<Document> Search(List<string> terms, int? indexStart, int? maxResults, DbExpression filter)
         {
             if (terms == null || terms.Count < 1) throw new ArgumentNullException(nameof(terms));
 
@@ -278,11 +278,8 @@ namespace Indexer
 
             #region Retrieve-and-Return
 
-            Expression e = new Expression("guid", Operators.In, guids);
-            DataTable result = _Database.Select("docs", indexStart, maxResults, null, e, null);
-             
-            List<Document> ret = new List<Document>();
-            if (result != null && result.Rows.Count > 0) ret = Document.FromDataTable(result);
+            DbExpression e = new DbExpression(_ORM.GetColumnName<Document>(nameof(Document.GUID)), DbOperators.In, guids);
+            List<Document> ret = _ORM.SelectMany<Document>(indexStart, maxResults, e);
             Log("returning " + ret.Count + " documents for search query");
             return ret;
 
@@ -307,31 +304,23 @@ namespace Indexer
         /// <param name="maxResults">Maximum number of records to return.</param>
         /// <param name="filter">Database filters.</param>
         /// <returns>List of document GUIDs.</returns>
-        public List<string> GetDocumentGuidsByTerms(List<string> terms, int? indexStart, int? maxResults, Expression filter)
-        { 
+        public List<string> GetDocumentGuidsByTerms(List<string> terms, int? indexStart, int? maxResults, DbExpression filter)
+        {
             if (terms == null || terms.Count < 1) throw new ArgumentNullException(nameof(terms));
 
-            List<string> returnFields = new List<string>
-            {
-                "docs_guid"
-            };
-
             List<string> ret = new List<string>();
-
-            Expression e = new Expression("term", Operators.In, terms);
+            DbExpression e = new DbExpression(_ORM.GetColumnName<IndexEntry>(nameof(IndexEntry.Term)), DbOperators.In, terms);
             if (filter != null) e.PrependAnd(filter);
 
-            DataTable result = _Database.Select("index_entries", indexStart, maxResults, returnFields, e, null);
-            if (result != null && result.Rows != null && result.Rows.Count > 0 && result.Columns.Contains("docs_guid"))
+            List<IndexEntry> entries = _ORM.SelectMany<IndexEntry>(indexStart, maxResults, e);
+            if (entries != null && entries.Count > 0)
             {
-                foreach (DataRow curr in result.Rows)
-                {
-                    ret.Add(curr["docs_guid"].ToString().ToLower());
-                }
+                ret = entries.Select(entry => entry.DocumentGuid).ToList();
+                ret = ret.Distinct().ToList();
             }
 
             Log("returning " + ret.Count + " document GUIDs for terms query");
-            return ret; 
+            return ret;
         }
 
         /// <summary>
@@ -342,13 +331,13 @@ namespace Indexer
         {
             if (String.IsNullOrEmpty(guid)) throw new ArgumentNullException(nameof(guid));
             Log("deleting document GUID " + guid);
-            Expression eIndexEntries = new Expression("docs_guid", Operators.Equals, guid);
-            Expression eDocs = new Expression("guid", Operators.Equals, guid);
-            _Database.Delete("index_entries", eIndexEntries);
-            _Database.Delete("docs", eDocs);
+            DbExpression eIndexEntries = new DbExpression(_ORM.GetColumnName<IndexEntry>(nameof(IndexEntry.DocumentGuid)), DbOperators.Equals, guid);
+            DbExpression eDocs = new DbExpression(_ORM.GetColumnName<Document>(nameof(Document.GUID)), DbOperators.Equals, guid);
+            _ORM.DeleteMany<IndexEntry>(eIndexEntries);
+            _ORM.DeleteMany<Document>(eDocs);
             return;
         }
-        
+
         /// <summary>
         /// Delete document by its handle.
         /// </summary>
@@ -360,10 +349,10 @@ namespace Indexer
             Document curr = GetDocumentByHandle(handle);
             if (curr == null) return;
 
-            Expression eIndexEntries = new Expression("docs_guid", Operators.Equals, curr.GUID);
-            Expression eDocs = new Expression("guid", Operators.Equals, curr.GUID);
-            _Database.Delete("index_entries", eIndexEntries);
-            _Database.Delete("docs", eDocs);
+            DbExpression eIndexEntries = new DbExpression(_ORM.GetColumnName<IndexEntry>(nameof(IndexEntry.DocumentGuid)), DbOperators.Equals, curr.GUID);
+            DbExpression eDocs = new DbExpression(_ORM.GetColumnName<Document>(nameof(Document.GUID)), DbOperators.Equals, curr.GUID);
+            _ORM.DeleteMany<IndexEntry>(eIndexEntries);
+            _ORM.DeleteMany<Document>(eDocs);
             return;
         }
 
@@ -375,26 +364,16 @@ namespace Indexer
         public Document GetDocumentByGuid(string guid)
         {
             if (String.IsNullOrEmpty(guid)) throw new ArgumentNullException(nameof(guid));
-            Expression e = new Expression("guid", Operators.Equals, guid);
-            DataTable result = _Database.Select("docs", null, null, null, e, null);
-            if (result == null) 
+            DbExpression e = new DbExpression(_ORM.GetColumnName<Document>(nameof(Document.GUID)), DbOperators.Equals, guid);
+            Document doc = _ORM.SelectFirst<Document>(e);
+            if (doc == null)
             {
                 Log("document with GUID " + guid + " not found");
                 return null;
             }
-
-            List<Document> retList = Document.FromDataTable(result);
-            if (retList == null || retList.Count < 1)
-            {
-                return null;
-            }
-            else
-            {
-                Log("returning document with GUID " + retList[0].GUID);
-                return retList[0]; 
-            }
+            return doc;
         }
-        
+
         /// <summary>
         /// Get a document by its handle.
         /// </summary>
@@ -403,24 +382,14 @@ namespace Indexer
         public Document GetDocumentByHandle(string handle)
         {
             if (String.IsNullOrEmpty(handle)) throw new ArgumentNullException(nameof(handle));
-            Expression e = new Expression("handle", Operators.Equals, handle);
-            DataTable result = _Database.Select("docs", null, null, null, e, null);
-            if (result == null || result.Rows.Count < 1)
+            DbExpression e = new DbExpression(_ORM.GetColumnName<Document>(nameof(Document.Handle)), DbOperators.Equals, handle);
+            Document doc = _ORM.SelectFirst<Document>(e);
+            if (doc == null)
             {
                 Log("document with handle " + handle + " not found");
                 return null;
             }
-
-            List<Document> ret = Document.FromDataTable(result);
-            if (ret == null || ret.Count < 1)
-            {
-                return null;
-            }
-            else
-            {
-                Log("returning document with handle " + ret[0].Handle);
-                return ret[0];
-            }
+            return doc;
         }
 
         /// <summary>
@@ -431,10 +400,8 @@ namespace Indexer
         public bool IsHandleIndexed(string handle)
         {
             if (String.IsNullOrEmpty(handle)) throw new ArgumentNullException(nameof(handle));
-            Expression e = new Expression("handle", Operators.Equals, handle);
-            DataTable result = _Database.Select("docs", null, null, null, e, null);
-            if (result == null || result.Rows.Count < 1) return false;
-            return true;
+            DbExpression e = new DbExpression(_ORM.GetColumnName<Document>(nameof(Document.Handle)), DbOperators.Equals, handle);
+            return _ORM.Exists<Document>(e);
         }
 
         /// <summary>
@@ -445,10 +412,8 @@ namespace Indexer
         public bool IsGuidIndexed(string guid)
         {
             if (String.IsNullOrEmpty(guid)) throw new ArgumentNullException(nameof(guid));
-            Expression e = new Expression("guid", Operators.Equals, guid);
-            DataTable result = _Database.Select("docs", null, null, null, e, null);
-            if (result == null || result.Rows.Count < 1) return false;
-            return true;
+            DbExpression e = new DbExpression(_ORM.GetColumnName<Document>(nameof(Document.GUID)), DbOperators.Equals, guid);
+            return _ORM.Exists<Document>(e);
         }
 
         /// <summary>
@@ -459,26 +424,16 @@ namespace Indexer
         public long GetTermReferenceCount(string term)
         {
             if (String.IsNullOrEmpty(term)) throw new ArgumentNullException(nameof(term));
-            string query = "SELECT COUNT(*) AS num_entries FROM index_entries WHERE term = '" + _Database.SanitizeString(term.ToLower()) + "'";
-            DataTable result = _Database.Query(query);
-            if (result != null && result.Rows != null && result.Rows.Count > 0 && result.Columns.Contains("num_entries"))
+            DbExpression e = new DbExpression(_ORM.GetColumnName<IndexEntry>(nameof(IndexEntry.Term)), DbOperators.Equals, term.ToLower());
+            List<IndexEntry> entries = _ORM.SelectMany<IndexEntry>(e);
+            if (entries != null && entries.Count > 0)
             {
-                return Convert.ToInt64(result.Rows[0]["num_entries"]);
+                return entries.Sum(entry => entry.ReferenceCount);
             }
             else
             {
                 return 0;
             }
-        }
-        
-        /// <summary>
-        /// Backup the database to the specified filename.
-        /// </summary>
-        /// <param name="destination">Destination filename.</param>
-        public void Backup(string destination)
-        {
-            if (String.IsNullOrEmpty(destination)) throw new ArgumentNullException(nameof(destination));
-            _Database.Backup(destination);
         }
 
         #endregion
@@ -496,6 +451,7 @@ namespace Indexer
                 Log("disposing");
 
                 _TokenSource.Cancel();
+                _ORM.Dispose();
 
                 lock (_Lock)
                 {
@@ -512,12 +468,11 @@ namespace Indexer
 
             string header = "[" + doc.GUID + "] ";
             Log(header + "beginning processing");
-             
+
             DateTime startTime = DateTime.Now;
             DateTime endTime = DateTime.Now;
             int termsRecorded = 0;
-            int termsTotal = 0; 
-             
+
             try
             {
                 #region Setup
@@ -559,7 +514,7 @@ namespace Indexer
                 Log(header + "processing content");
 
                 string content = Encoding.UTF8.GetString(doc.Data);
-                
+
                 string[] termsRaw = content.Split(_TermDelimiters, StringSplitOptions.RemoveEmptyEntries);
                 List<string> termsAlphaOnly = new List<string>();
 
@@ -600,7 +555,7 @@ namespace Indexer
                 {
                     Log(header + "no terms found");
                 }
-                 
+
                 #endregion
 
                 #region Remove-Existing-Entries
@@ -615,124 +570,35 @@ namespace Indexer
 
                 #region Create-New-Document-Entry
 
-                _Database.Insert("docs", doc.ToInsertDictionary());
-                Log(header + "created document database entry");
+                doc = _ORM.Insert<Document>(doc);
+                Log(header + "created document entry");
 
                 #endregion
 
                 #region Create-New-Terms-Entries
 
-                termsTotal = terms.Count;
-                Log(header + "detected " + termsTotal + " terms in document");
-
-                string query = "";
-                string guid = _Database.SanitizeString(doc.GUID);
-                int batchSize = 1000;    // we can make this configurable later
-                Dictionary<string, int> tempDict = new Dictionary<string, int>();
-
-                while (termsRecorded < termsTotal)
+                Log(header + "creating " + terms.Count + " index entries, please be patient");
+                foreach (KeyValuePair<string, int> term in terms)
                 {
-                    if (tempDict.Count >= batchSize)
-                    {
-                        #region Drain-the-Batch
-
-                        query =
-                            "INSERT INTO index_entries (term, refcount, docs_guid) VALUES ";
-
-                        int termsAdded = 0;
-                        foreach (KeyValuePair<string, int> currKvp in tempDict)
-                        {
-                            if (String.IsNullOrEmpty(currKvp.Key)) continue;
-
-                            if (termsAdded == 0)
-                            {
-                                query +=
-                                    "('" + _Database.SanitizeString(currKvp.Key).ToLower() + "'," +
-                                    currKvp.Value + "," +
-                                    "'" + guid + "')";
-                            }
-                            else
-                            {
-                                query +=
-                                    ",('" + _Database.SanitizeString(currKvp.Key).ToLower() + "'," +
-                                    currKvp.Value + "," +
-                                    "'" + guid + "')";
-                            }
-
-                            termsAdded++;
-                        }
-
-                        _Database.Query(query);
-
-                        Log(header + "recorded " + termsRecorded + "/" + termsTotal + " terms");
-                        tempDict = new Dictionary<string, int>();
-
-                        #endregion
-                    }
-                    else
-                    {
-                        #region Add-to-Batch
-
-                        string key = terms.Keys.ElementAt(termsRecorded);
-                        int val = terms.Values.ElementAt(termsRecorded);
-                        tempDict.Add(key, val);
-                        termsRecorded++;
-
-                        #endregion
-                    }
-                }
-
-                #endregion
-
-                #region Submit-Remaining-Terms
-
-                if (tempDict != null && tempDict.Count > 0)
-                {
-                    #region Drain-Remaining
-
-                    query =
-                        "INSERT INTO index_entries (term, refcount, docs_guid) VALUES ";
-
-                    int termsAdded = 0;
-                    foreach (KeyValuePair<string, int> currKvp in tempDict)
-                    {
-                        if (String.IsNullOrEmpty(currKvp.Key)) continue;
-
-                        if (termsAdded == 0)
-                        {
-                            query +=
-                                "('" + _Database.SanitizeString(currKvp.Key).ToLower() + "'," +
-                                currKvp.Value + "," +
-                                "'" + guid + "')";
-                        }
-                        else
-                        {
-                            query +=
-                                ",('" + _Database.SanitizeString(currKvp.Key).ToLower() + "'," +
-                                currKvp.Value + "," +
-                                "'" + guid + "')";
-                        }
-
-                        termsAdded++;
-                    }
-
-                    _Database.Query(query);
-                    Log(header + "recorded " + termsRecorded + "/" + termsTotal + " terms");
-                    tempDict = new Dictionary<string, int>();
-
-                    #endregion
+                    IndexEntry entry = new IndexEntry(doc.GUID, term.Key, term.Value);
+                    entry = _ORM.Insert<IndexEntry>(entry);
+                    termsRecorded++;
                 }
 
                 #endregion
 
                 return;
             }
+            catch (TaskCanceledException)
+            {
+                Log(header + "cancellation requested");
+            }
             catch (OperationCanceledException)
             {
                 Log(header + "cancellation requested");
             }
             catch (Exception e)
-            { 
+            {
                 Log(header + "exception encountered: " + Environment.NewLine + e.ToString());
                 throw;
             }
@@ -741,8 +607,8 @@ namespace Indexer
                 _CurrentThreads--;
 
                 lock (_Lock)
-                { 
-                    if (_DocumentsIndexing != null 
+                {
+                    if (_DocumentsIndexing != null
                         && _DocumentsIndexing.Count > 0
                         && _DocumentsIndexing.Contains(doc.GUID))
                     {
@@ -757,47 +623,10 @@ namespace Indexer
                 decimal msPerTerm = 0;
                 if (termsRecorded > 0) msPerTerm = Convert.ToDecimal((msTotal / termsRecorded).ToString("F"));
 
-                Log(header + "finished; " + termsRecorded + "/" + termsTotal + " terms [" + msTotal + "ms total, " + msPerTerm + "ms/term]");
+                Log(header + "finished; " + termsRecorded + " terms [" + msTotal + "ms total, " + msPerTerm + "ms/term]");
             }
         }
 
-        private void CreateDocumentTable()
-        {
-            string query =
-                "CREATE TABLE IF NOT EXISTS docs " +
-                "(" +
-                "  id            INTEGER PRIMARY KEY AUTOINCREMENT, " + 
-                "  title         VARCHAR(256)   COLLATE NOCASE, " +
-                "  description   VARCHAR(1024)  COLLATE NOCASE, " +
-                "  handle        VARCHAR(256)   COLLATE NOCASE, " +
-                "  source        VARCHAR(32)    COLLATE NOCASE, " +
-                "  added_by      VARCHAR(32)    COLLATE NOCASE, " +
-                "  guid          VARCHAR(64)    COLLATE NOCASE, " +
-                "  added         VARCHAR(32) " + 
-                ")";
-
-            _Database.Query(query);
-            
-            query = "PRAGMA journal_mode = TRUNCATE";
-            _Database.Query(query); 
-        }
-
-        private void CreateIndexEntriesTable()
-        {
-            string query =
-                "CREATE TABLE IF NOT EXISTS index_entries " +
-                "(" +
-                "  id           INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "  term         VARCHAR(256) COLLATE NOCASE, " +
-                "  refcount     INTEGER, " +
-                "  docs_guid    VARCHAR(64) COLLATE NOCASE" +
-                ")";
-
-            _Database.Query(query);
-            query = "PRAGMA journal_mode = TRUNCATE";
-            _Database.Query(query);
-        }
-        
         private string AlphaOnlyString(string dirty)
         {
             if (String.IsNullOrEmpty(dirty)) return null;
@@ -822,7 +651,283 @@ namespace Indexer
         {
             Logger?.Invoke(_Header + msg);
         }
-         
+
+        #endregion
+
+        #region Private-Static
+
+        private static char[] _TermDelimiters = new char[]
+            {
+                '!',
+                '\"',
+                '#',
+                '$',
+                '%',
+                '&',
+                '\'',
+                '(',
+                ')',
+                '*',
+                '+',
+                ',',
+                '-',
+                '.',
+                '/',
+                ':',
+                ';',
+                '<',
+                '=',
+                '>',
+                '?',
+                '@',
+                '[',
+                '\\',
+                ']',
+                '^',
+                '_',
+                '`',
+                '{',
+                '|',
+                '}',
+                '~',
+                ' ',
+                '\'',
+                '\"',
+                '\u001a',
+                '\r',
+                '\n',
+                '\t'
+            };
+
+        private static List<string> _IgnoreWords = new List<string>
+        {
+            "a",
+            "about",
+            "above",
+            "after",
+            "again",
+            "against",
+            "aint",
+            "ain't",
+            "all",
+            "also",
+            "am",
+            "an",
+            "and",
+            "any",
+            "are",
+            "arent",
+            "aren't",
+            "as",
+            "at",
+            "be",
+            "because",
+            "been",
+            "before",
+            "being",
+            "below",
+            "between",
+            "both",
+            "but",
+            "by",
+            "cant",
+            "can't",
+            "cannot",
+            "could",
+            "couldnt",
+            "couldn't",
+            "did",
+            "didnt",
+            "didn't",
+            "do",
+            "does",
+            "doesnt",
+            "doesn't",
+            "doing",
+            "dont",
+            "don't",
+            "down",
+            "during",
+            "each",
+            "few",
+            "for",
+            "from",
+            "further",
+            "had",
+            "hadnt",
+            "hadn't",
+            "has",
+            "hasnt",
+            "hasn't",
+            "have",
+            "havent",
+            "haven't",
+            "having",
+            "he",
+            "hed",
+            "he'd",
+            "he'll",
+            "hes",
+            "he's",
+            "her",
+            "here",
+            "heres",
+            "here's",
+            "hers",
+            "herself",
+            "him",
+            "himself",
+            "his",
+            "how",
+            "hows",
+            "how's",
+            "i",
+            "id",
+            "i'd",
+            "i'll",
+            "im",
+            "i'm",
+            "ive",
+            "i've",
+            "if",
+            "in",
+            "into",
+            "is",
+            "isnt",
+            "isn't",
+            "it",
+            "its",
+            "it's",
+            "its",
+            "itself",
+            "lets",
+            "let's",
+            "me",
+            "more",
+            "most",
+            "mustnt",
+            "mustn't",
+            "my",
+            "myself",
+            "no",
+            "nor",
+            "not",
+            "of",
+            "off",
+            "on",
+            "once",
+            "only",
+            "or",
+            "other",
+            "ought",
+            "our",
+            "ours",
+            "ourselves",
+            "out",
+            "over",
+            "own",
+            "same",
+            "shall",
+            "shant",
+            "shan't",
+            "she",
+            "she'd",
+            "she'll",
+            "shes",
+            "she's",
+            "should",
+            "shouldnt",
+            "shouldn't",
+            "so",
+            "some",
+            "such",
+            "than",
+            "that",
+            "thats",
+            "that's",
+            "the",
+            "their",
+            "theirs",
+            "them",
+            "themselves",
+            "then",
+            "there",
+            "theres",
+            "there's",
+            "these",
+            "they",
+            "theyd",
+            "they'd",
+            "theyll",
+            "they'll",
+            "theyre",
+            "they're",
+            "theyve",
+            "they've",
+            "this",
+            "those",
+            "thou",
+            "though",
+            "through",
+            "to",
+            "too",
+            "under",
+            "until",
+            "unto",
+            "up",
+            "very",
+            "was",
+            "wasnt",
+            "wasn't",
+            "we",
+            "we'd",
+            "we'll",
+            "were",
+            "we're",
+            "weve",
+            "we've",
+            "werent",
+            "weren't",
+            "what",
+            "whats",
+            "what's",
+            "when",
+            "whens",
+            "when's",
+            "where",
+            "wheres",
+            "where's",
+            "which",
+            "while",
+            "who",
+            "whos",
+            "who's",
+            "whose",
+            "whom",
+            "why",
+            "whys",
+            "why's",
+            "with",
+            "wont",
+            "won't",
+            "would",
+            "wouldnt",
+            "wouldn't",
+            "you",
+            "youd",
+            "you'd",
+            "youll",
+            "you'll",
+            "youre",
+            "you're",
+            "youve",
+            "you've",
+            "your",
+            "yours",
+            "yourself",
+            "yourselves"
+        };
+
         #endregion
     }
 }

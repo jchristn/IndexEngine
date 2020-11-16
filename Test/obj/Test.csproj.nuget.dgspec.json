@@ -1,18 +1,19 @@
 {
   "format": 1,
   "restore": {
-    "C:\\code\\misc\\IndexEngine-2.1\\Test\\Test.csproj": {}
+    "C:\\Code\\Misc\\IndexEngine-2.1\\Test\\Test.csproj": {}
   },
   "projects": {
-    "C:\\code\\misc\\IndexEngine-2.1\\IndexEngine\\IndexEngine.csproj": {
-      "version": "2.1.0",
+    "C:\\Code\\Misc\\IndexEngine-2.1\\IndexEngine\\IndexEngine.csproj": {
+      "version": "2.1.3",
       "restore": {
-        "projectUniqueName": "C:\\code\\misc\\IndexEngine-2.1\\IndexEngine\\IndexEngine.csproj",
+        "projectUniqueName": "C:\\Code\\Misc\\IndexEngine-2.1\\IndexEngine\\IndexEngine.csproj",
         "projectName": "IndexEngine",
-        "projectPath": "C:\\code\\misc\\IndexEngine-2.1\\IndexEngine\\IndexEngine.csproj",
+        "projectPath": "C:\\Code\\Misc\\IndexEngine-2.1\\IndexEngine\\IndexEngine.csproj",
         "packagesPath": "C:\\Users\\joelc\\.nuget\\packages\\",
-        "outputPath": "C:\\code\\misc\\IndexEngine-2.1\\IndexEngine\\obj\\",
+        "outputPath": "C:\\Code\\Misc\\IndexEngine-2.1\\IndexEngine\\obj\\",
         "projectStyle": "PackageReference",
+        "crossTargeting": true,
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -23,16 +24,30 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
+          "net461",
+          "net5.0",
+          "netcoreapp3.1",
           "netstandard2.1"
         ],
         "sources": {
-          "C:\\NuGet": {},
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://nuget.pkg.github.com/jchristn/index.json": {}
         },
         "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          },
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          },
+          "net461": {
+            "targetAlias": "net461",
+            "projectReferences": {}
+          },
           "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
             "projectReferences": {}
           }
         },
@@ -43,11 +58,72 @@
         }
       },
       "frameworks": {
-        "netstandard2.1": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "SqliteHelper": {
+            "WatsonORM.Sqlite": {
               "target": "Package",
-              "version": "[1.2.0, )"
+              "version": "[1.3.0.19, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        },
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "WatsonORM.Sqlite": {
+              "target": "Package",
+              "version": "[1.3.0.19, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        },
+        "net461": {
+          "targetAlias": "net461",
+          "dependencies": {
+            "WatsonORM.Sqlite": {
+              "target": "Package",
+              "version": "[1.3.0.19, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        },
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "dependencies": {
+            "WatsonORM.Sqlite": {
+              "target": "Package",
+              "version": "[1.3.0.19, )"
             }
           },
           "imports": [
@@ -65,19 +141,20 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\code\\misc\\IndexEngine-2.1\\Test\\Test.csproj": {
+    "C:\\Code\\Misc\\IndexEngine-2.1\\Test\\Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\code\\misc\\IndexEngine-2.1\\Test\\Test.csproj",
+        "projectUniqueName": "C:\\Code\\Misc\\IndexEngine-2.1\\Test\\Test.csproj",
         "projectName": "Test",
-        "projectPath": "C:\\code\\misc\\IndexEngine-2.1\\Test\\Test.csproj",
+        "projectPath": "C:\\Code\\Misc\\IndexEngine-2.1\\Test\\Test.csproj",
         "packagesPath": "C:\\Users\\joelc\\.nuget\\packages\\",
-        "outputPath": "C:\\code\\misc\\IndexEngine-2.1\\Test\\obj\\",
+        "outputPath": "C:\\Code\\Misc\\IndexEngine-2.1\\Test\\obj\\",
         "projectStyle": "PackageReference",
+        "crossTargeting": true,
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -88,19 +165,36 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
+          "net461",
+          "net5.0",
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\NuGet": {},
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://nuget.pkg.github.com/jchristn/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\code\\misc\\IndexEngine-2.1\\IndexEngine\\IndexEngine.csproj": {
-                "projectPath": "C:\\code\\misc\\IndexEngine-2.1\\IndexEngine\\IndexEngine.csproj"
+              "C:\\Code\\Misc\\IndexEngine-2.1\\IndexEngine\\IndexEngine.csproj": {
+                "projectPath": "C:\\Code\\Misc\\IndexEngine-2.1\\IndexEngine\\IndexEngine.csproj"
+              }
+            }
+          },
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Code\\Misc\\IndexEngine-2.1\\IndexEngine\\IndexEngine.csproj": {
+                "projectPath": "C:\\Code\\Misc\\IndexEngine-2.1\\IndexEngine\\IndexEngine.csproj"
+              }
+            }
+          },
+          "net461": {
+            "targetAlias": "net461",
+            "projectReferences": {
+              "C:\\Code\\Misc\\IndexEngine-2.1\\IndexEngine\\IndexEngine.csproj": {
+                "projectPath": "C:\\Code\\Misc\\IndexEngine-2.1\\IndexEngine\\IndexEngine.csproj"
               }
             }
           }
@@ -113,6 +207,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -128,7 +223,35 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        },
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        },
+        "net461": {
+          "targetAlias": "net461",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win7-x86": {
+          "#import": []
         }
       }
     }

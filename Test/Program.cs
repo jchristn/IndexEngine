@@ -92,7 +92,7 @@ namespace Test
                             {
                                 foreach (Document curr in results)
                                 {
-                                    Console.WriteLine(curr.ToString());
+                                    Console.WriteLine(curr.ToJson());
                                 }
                             }
                             break;
@@ -105,11 +105,7 @@ namespace Test
                                 Console.WriteLine("Exists: " + ie.IsHandleIndexed(handle));
                             }
                             break;
-
-                        case "backup":
-                            ie.Backup(InputString("Destination filename", false));
-                            break;
-
+                             
                         default:
                             break;
                     }
@@ -118,7 +114,7 @@ namespace Test
             }
             catch (Exception e)
             {
-                LogException(e);
+                Console.WriteLine("Exception:" + Environment.NewLine + e.ToString()); 
             }
             finally
             {
@@ -139,22 +135,9 @@ namespace Test
             Console.WriteLine("  threads         display number of running index threads");
             Console.WriteLine("  search          search for documents by terms");
             Console.WriteLine("  exists          check if a document exists by its handle");
-            Console.WriteLine("  backup          backup the index to another file");
             Console.WriteLine("");
         }
-
-        static void LogException(Exception e)
-        {
-            Console.WriteLine("================================================================================");
-            Console.WriteLine(" = Exception Type: " + e.GetType().ToString());
-            Console.WriteLine(" = Exception Data: " + e.Data);
-            Console.WriteLine(" = Inner Exception: " + e.InnerException);
-            Console.WriteLine(" = Exception Message: " + e.Message);
-            Console.WriteLine(" = Exception Source: " + e.Source);
-            Console.WriteLine(" = Exception StackTrace: " + e.StackTrace);
-            Console.WriteLine("================================================================================");
-        }
-
+         
         static Document BuildFileDocument()
         {
             Console.Write("File: ");

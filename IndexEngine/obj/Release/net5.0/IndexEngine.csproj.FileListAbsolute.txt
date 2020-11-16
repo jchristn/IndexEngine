@@ -1,0 +1,12 @@
+C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net5.0\IndexEngine.deps.json
+C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net5.0\IndexEngine.dll
+C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net5.0\ref\IndexEngine.dll
+C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net5.0\IndexEngine.pdb
+C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\net5.0\IndexEngine.csprojAssemblyReference.cache
+C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\net5.0\IndexEngine.GeneratedMSBuildEditorConfig.editorconfig
+C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\net5.0\IndexEngine.AssemblyInfoInputs.cache
+C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\net5.0\IndexEngine.AssemblyInfo.cs
+C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\net5.0\IndexEngine.csproj.CoreCompileInputs.cache
+C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\net5.0\IndexEngine.dll
+C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\net5.0\ref\IndexEngine.dll
+C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\net5.0\IndexEngine.pdb

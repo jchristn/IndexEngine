@@ -14,3 +14,5 @@ C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\netstandard2.1\IndexEngine.
 C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\netstandard2.1\IndexEngine.AssemblyInfo.cs
 C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\netstandard2.1\IndexEngine.dll
 C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\netstandard2.1\IndexEngine.pdb
+C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\netstandard2.1\IndexEngine.csproj.CoreCompileInputs.cache
+C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\netstandard2.1\IndexEngine.xml
