@@ -16,9 +16,7 @@ C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\IndexEngine.dll
 C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\IndexEngine.pdb
 C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\Microsoft.Data.Sqlite.dll
 C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\SQLitePCLRaw.batteries_v2.dll
-C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\SQLitePCLRaw.nativelibrary.dll
 C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\SQLitePCLRaw.core.dll
-C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\SQLitePCLRaw.provider.dynamic_cdecl.dll
 C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\System.Buffers.dll
 C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\System.Memory.dll
 C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\System.Numerics.Vectors.dll
@@ -119,7 +117,6 @@ C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\System.Xml.XmlDocume
 C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\System.Xml.XmlSerializer.dll
 C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\System.Xml.XPath.dll
 C:\code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\System.Xml.XPath.XDocument.dll
-C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\net461\IndexEngine.csprojAssemblyReference.cache
 C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\net461\IndexEngine.AssemblyInfoInputs.cache
 C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\net461\IndexEngine.AssemblyInfo.cs
 C:\code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\net461\IndexEngine.csproj.CoreCompileInputs.cache
@@ -134,3 +131,6 @@ C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\Microsoft.Extensions
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\Newtonsoft.Json.dll
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\WatsonORM.Core.dll
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\WatsonORM.Sqlite.dll
+C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Release\net461\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\net461\IndexEngine.csproj.AssemblyReference.cache
+C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Release\net461\IndexEngine.GeneratedMSBuildEditorConfig.editorconfig

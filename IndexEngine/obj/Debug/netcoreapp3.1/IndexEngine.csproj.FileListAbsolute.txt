@@ -6,4 +6,5 @@ C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Debug\netcoreapp3.1\IndexEngine.Ass
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Debug\netcoreapp3.1\IndexEngine.csproj.CoreCompileInputs.cache
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Debug\netcoreapp3.1\IndexEngine.dll
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Debug\netcoreapp3.1\IndexEngine.pdb
-C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Debug\netcoreapp3.1\IndexEngine.csprojAssemblyReference.cache
+C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Debug\netcoreapp3.1\IndexEngine.csproj.AssemblyReference.cache
+C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Debug\netcoreapp3.1\IndexEngine.GeneratedMSBuildEditorConfig.editorconfig

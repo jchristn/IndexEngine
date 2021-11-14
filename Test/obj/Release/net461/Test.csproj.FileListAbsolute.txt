@@ -51,9 +51,7 @@ C:\Code\Misc\IndexEngine-2.1\Test\bin\Release\net461\Microsoft.Extensions.Config
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Release\net461\Microsoft.Extensions.Primitives.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Release\net461\Newtonsoft.Json.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Release\net461\SQLitePCLRaw.batteries_v2.dll
-C:\Code\Misc\IndexEngine-2.1\Test\bin\Release\net461\SQLitePCLRaw.nativelibrary.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Release\net461\SQLitePCLRaw.core.dll
-C:\Code\Misc\IndexEngine-2.1\Test\bin\Release\net461\SQLitePCLRaw.provider.dynamic_cdecl.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Release\net461\System.Buffers.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Release\net461\System.Memory.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Release\net461\System.Numerics.Vectors.dll
@@ -159,7 +157,6 @@ C:\Code\Misc\IndexEngine-2.1\Test\bin\Release\net461\System.Xml.XPath.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Release\net461\System.Xml.XPath.XDocument.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Release\net461\IndexEngine.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Release\net461\IndexEngine.pdb
-C:\Code\Misc\IndexEngine-2.1\Test\obj\Release\net461\Test.csprojAssemblyReference.cache
 C:\Code\Misc\IndexEngine-2.1\Test\obj\Release\net461\Test.exe.config
 C:\Code\Misc\IndexEngine-2.1\Test\obj\Release\net461\Test.AssemblyInfoInputs.cache
 C:\Code\Misc\IndexEngine-2.1\Test\obj\Release\net461\Test.AssemblyInfo.cs
@@ -167,3 +164,7 @@ C:\Code\Misc\IndexEngine-2.1\Test\obj\Release\net461\Test.csproj.CoreCompileInpu
 C:\Code\Misc\IndexEngine-2.1\Test\obj\Release\net461\Test.csproj.CopyComplete
 C:\Code\Misc\IndexEngine-2.1\Test\obj\Release\net461\Test.exe
 C:\Code\Misc\IndexEngine-2.1\Test\obj\Release\net461\Test.pdb
+C:\Code\Misc\IndexEngine-2.1\Test\bin\Release\net461\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Code\Misc\IndexEngine-2.1\Test\obj\Release\net461\Test.csproj.AssemblyReference.cache
+C:\Code\Misc\IndexEngine-2.1\Test\obj\Release\net461\Test.csproj.SuggestedBindingRedirects.cache
+C:\Code\Misc\IndexEngine-2.1\Test\obj\Release\net461\Test.GeneratedMSBuildEditorConfig.editorconfig

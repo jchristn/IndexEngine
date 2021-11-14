@@ -22,9 +22,7 @@ C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Debug\net461\Microsoft.Extensions.C
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Debug\net461\Microsoft.Extensions.Primitives.dll
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Debug\net461\Newtonsoft.Json.dll
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Debug\net461\SQLitePCLRaw.batteries_v2.dll
-C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Debug\net461\SQLitePCLRaw.nativelibrary.dll
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Debug\net461\SQLitePCLRaw.core.dll
-C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Debug\net461\SQLitePCLRaw.provider.dynamic_cdecl.dll
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Debug\net461\System.Buffers.dll
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Debug\net461\System.Memory.dll
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Debug\net461\System.Numerics.Vectors.dll
@@ -127,10 +125,12 @@ C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Debug\net461\System.Xml.XmlDocument
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Debug\net461\System.Xml.XmlSerializer.dll
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Debug\net461\System.Xml.XPath.dll
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Debug\net461\System.Xml.XPath.XDocument.dll
-C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Debug\net461\IndexEngine.csprojAssemblyReference.cache
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Debug\net461\IndexEngine.AssemblyInfoInputs.cache
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Debug\net461\IndexEngine.AssemblyInfo.cs
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Debug\net461\IndexEngine.csproj.CoreCompileInputs.cache
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Debug\net461\IndexEngine.csproj.CopyComplete
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Debug\net461\IndexEngine.dll
 C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Debug\net461\IndexEngine.pdb
+C:\Code\Misc\IndexEngine-2.1\IndexEngine\bin\Debug\net461\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Debug\net461\IndexEngine.csproj.AssemblyReference.cache
+C:\Code\Misc\IndexEngine-2.1\IndexEngine\obj\Debug\net461\IndexEngine.GeneratedMSBuildEditorConfig.editorconfig

@@ -24,9 +24,7 @@ C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\Microsoft.Extensions.Configur
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\SQLitePCLRaw.batteries_v2.dll
-C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\SQLitePCLRaw.nativelibrary.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\SQLitePCLRaw.core.dll
-C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\SQLitePCLRaw.provider.dynamic_cdecl.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\WatsonORM.Core.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\WatsonORM.Sqlite.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\runtimes\alpine-x64\native\libe_sqlite3.so
@@ -44,7 +42,6 @@ C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\runtimes\win-x64\native\e_sql
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\runtimes\win-x86\native\e_sqlite3.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\IndexEngine.dll
 C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\IndexEngine.pdb
-C:\Code\Misc\IndexEngine-2.1\Test\obj\Debug\net5.0\Test.csprojAssemblyReference.cache
 C:\Code\Misc\IndexEngine-2.1\Test\obj\Debug\net5.0\Test.GeneratedMSBuildEditorConfig.editorconfig
 C:\Code\Misc\IndexEngine-2.1\Test\obj\Debug\net5.0\Test.AssemblyInfoInputs.cache
 C:\Code\Misc\IndexEngine-2.1\Test\obj\Debug\net5.0\Test.AssemblyInfo.cs
@@ -54,3 +51,8 @@ C:\Code\Misc\IndexEngine-2.1\Test\obj\Debug\net5.0\Test.dll
 C:\Code\Misc\IndexEngine-2.1\Test\obj\Debug\net5.0\ref\Test.dll
 C:\Code\Misc\IndexEngine-2.1\Test\obj\Debug\net5.0\Test.pdb
 C:\Code\Misc\IndexEngine-2.1\Test\obj\Debug\net5.0\Test.genruntimeconfig.cache
+C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\runtimes\linux-s390x\native\libe_sqlite3.so
+C:\Code\Misc\IndexEngine-2.1\Test\bin\Debug\net5.0\runtimes\osx-arm64\native\libe_sqlite3.dylib
+C:\Code\Misc\IndexEngine-2.1\Test\obj\Debug\net5.0\Test.csproj.AssemblyReference.cache
